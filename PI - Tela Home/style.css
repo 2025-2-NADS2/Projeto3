@@ -1,101 +1,136 @@
 /* --- ESTILOS GERAIS E RESET --- */
 :root {
-    --bg-light: #E9E9E9;
-    --bg-white: #F9F9F9;
-    --bg-dark-gray: #D9D9D9;
-    --text-dark: #000000;
-    --text-light: #E9E9E9;
-    --border-color: #CEE5FF;
+    /* Paleta Principal */
+    --cor-fundo-principal: #EAF4FF; /* Azul bem clarinho */
+    --cor-fundo-elementos: #FFFFFF; /* Branco */
+    --cor-texto: #1A202C;           /* Preto suave */
+    --cor-borda-suave: #DDEBFF;     /* Borda sutil */
+  
+    /* Cores de Destaque (para botões e links) */
+    --cor-destaque: #3f8bfc;         /* Cor Destaque - Padrão */
+    --cor-destaque-hover: #000879;  /* Para o efeito hover */
+    --cor-texto-destaque: #FFFFFF;   /* Texto branco para usar sobre a cor de destaque */
+  
+    /* Gradiente */
     --primary-blue-gradient: linear-gradient(90deg, #397BF6 0%, #3572E4 48%, #214890 100%);
-}
-
-* {
+  }
+  
+  /* --- RESET BÁSICO --- */
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
+  }
+  
+  /* --- ESTILOS GLOBAIS --- */
+  body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-}
-
-.container {
+    background-color: var(--cor-fundo-principal);
+    color: var(--cor-texto);
+  }
+  
+  .container {
     width: 95%;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-/* --- CABEÇALHO --- */
-.main-header {
-    background-color: var(--bg-dark-gray);
-    border-bottom: 1px solid var(--border-color);
+  }
+  
+  /* --- CABEÇALHO --- */
+  .main-header {
+    background-color: var(--cor-fundo-elementos); /* Alterado */
+    border-bottom: 1px solid var(--cor-borda-suave); /* Alterado */
     padding: 10px 0;
-}
-
-.main-header .container {
+  }
+  
+  .main-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo img {
+  }
+  
+  .logo img {
     display: block;
-}
-
-.main-nav ul {
+  }
+  
+  .main-nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
-}
-
-.main-nav a {
+    gap: 50px;
+  }
+  
+  /* Estilo dos links de navegação  */
+  .main-nav a {
     text-decoration: none;
-    color: var(--text-dark);
+    color: var(--cor-texto); 
     font-family: 'Jura', sans-serif;
     font-size: 14px;
     padding: 8px 12px;
-    background-color: #FFF3F3;
-    border-radius: 4px;
-}
-
-.btn {
+    border-radius: 6px;
+    transition: color 0.3s ease, background-color 0.3s ease; /* Efeito de transição  */
+  }
+  
+  /* Efeito hover na navegação */
+  .main-nav a:hover {
+    color: var(--cor-destaque); 
+    background-color: transparent; /* Remover fundo desnecessário */
+  }
+  
+  /* --- BOTÕES PADRONIZADOS --- */
+  .btn {
+    display: inline-block; /* Adicionado para garantir o padding correto */
     text-decoration: none;
-    color: var(--text-dark);
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 6px; 
     font-weight: 700;
     text-align: center;
-}
-
-.btn-donate {
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn:hover {
+      transform: translateY(-2px); /* Hover - Efeito ao passar o mouse */
+  }
+  
+  /*Btn Doador */
+  .btn-doador {
+    background-color: var(--cor-destaque); 
+    color: var(--cor-texto-destaque); 
     font-family: 'Jura', sans-serif;
     font-size: 16px;
-    background: radial-gradient(ellipse, #E9F2FF 20%, transparent 80%);
-}
-
-/* --- SEÇÃO CARROSSEL --- */
-/* O contêiner principal do carrossel */
+  }
+  
+  .btn-doador:hover {
+    background-color: var(--cor-destaque-hover); /* Hover para fazer o efeito quando passar o cursor do mouse */
+  }
+  
+  /* Botão para os cards de projeto */
+  .btn-card {
+    background: var(--primary-blue-gradient);
+    color: var(--cor-texto-destaque);
+    font-size: 12px;
+    padding: 4px 16px;
+  }
+  
+ /* Estilo base do container */
 .carousel-container {
-    position: relative; /* Essencial para posicionar os botões e as bolinhas */
-    width: 80%;
+    position: relative; /* Essencial para posicionar os botões dentro dele */
     max-width: 800px;
-    margin: auto;
-    overflow: hidden; /* O truque principal! Esconde os slides que estão fora */
+    margin: 30px auto;
+    overflow: hidden; /* Esconde os slides que estão fora da área visível */
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* A faixa que contém todos os slides */
+/* O "trilho" que segura todos os slides */
 .carousel-track {
     display: flex; /* Alinha os slides lado a lado */
-    transition: transform 0.5s ease-in-out; /* A animação de deslize! */
+    transition: transform 0.5s ease-in-out; /* Animação de deslize */
 }
 
 /* Cada slide individual */
 .carousel-slide {
-    min-width: 100%; /* Cada slide ocupa 100% da largura do contêiner */
+    min-width: 100%;
     box-sizing: border-box;
 }
 
@@ -104,7 +139,7 @@ body {
     display: block; /* Remove espaços extras abaixo da imagem */
 }
 
-/* Estilo dos botões de seta */
+/* Estilo dos botões de avançar/voltar */
 .carousel-button {
     position: absolute;
     top: 50%;
@@ -112,11 +147,12 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    cursor: pointer;
-    padding: 10px 15px;
     font-size: 24px;
-    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
     z-index: 10;
+    transition: background-color 0.3s;
 }
 
 .carousel-button:hover {
@@ -124,21 +160,26 @@ body {
 }
 
 .carousel-button.prev {
-    left: 10px;
+    left: 15px; /* Posição do botão esquerdo */
 }
 
 .carousel-button.next {
-    right: 10px;
+    right: 15px; /* Posição do botão direito */
 }
 
-/* Contêiner das bolinhas de navegação */
+/* Esconde o botão se ele estiver desabilitado (no início ou fim) */
+.carousel-button.is-hidden {
+    display: none;
+}
+
+/* Container dos indicadores de navegação (bolinhas) */
 .carousel-nav {
     position: absolute;
     bottom: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Centraliza horizontalmente */
+    transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 10px; /* Espaçamento entre as bolinhas */
 }
 
 /* Estilo de cada bolinha */
@@ -149,189 +190,195 @@ body {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-/* Estilo da bolinha ativa */
+.carousel-dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Estilo da bolinha do slide atual */
 .carousel-dot.current-slide {
     background-color: white;
+    transform: scale(1.5); /* Destaca a bolinha ativa (Deixa Maior) */
 }
-
-/* --- SEÇÃO SOBRE NÓS --- */
-.section-title {
+  
+  /* --- SEÇÃO SOBRE NÓS --- */
+  .section-title {
     font-family: 'Jua', 'Lateef', sans-serif;
     font-size: 20px;
     text-align: center;
-    background-color: var(--bg-dark-gray);
+    background-color: var(--cor-destaque); 
+    color: var(--cor-texto-destaque); 
     max-width: 150px;
     margin: 40px auto -15px auto;
     padding: 5px;
     border-radius: 4px;
     position: relative;
     z-index: 2;
-}
-
-.about-card {
-    background-color: var(--bg-white);
+  }
+  
+  .about-card {
+    background-color: var(--cor-fundo-elementos); 
     border-radius: 23px;
     padding: 40px 25px;
     display: flex;
     align-items: center;
     gap: 20px;
-}
-
-.about-text {
+    border: 1px solid var(--cor-borda-suave); 
+  }
+  
+  .about-text {
     flex: 1;
     font-family: 'Lateef', sans-serif;
     font-size: 20px;
     line-height: 1.2;
-}
-
-.founder-name {
+  }
+  
+  .founder-name {
     display: block;
     margin-top: 20px;
     font-size: 20px;
-}
-
-.about-image img {
+  }
+  
+  .about-image img {
     width: 131px;
     height: 131px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-/* --- SEÇÃO DE PROJETOS --- */
-.projects-section {
-    background-color: var(--bg-white);
-    padding: 40px 0;
-    margin-top: 30px;
-}
-
-.projects-grid {
+    border: 3px solid var(--cor-borda-suave); 
+  }
+  
+  /* --- SEÇÃO DE PROJETOS --- */
+  .projects-section {
+    background-color: var(--cor-fundo-elementos); 
+    padding: 50px 0;
+    margin-top: 40px;
+  }
+  
+  .projects-grid {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 30px;
     flex-wrap: wrap;
     padding-top: 30px;
-}
-
-.project-card {
-    width: 120px;
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
+  }
+  
+  .project-card {
+    width: 300px;
+    background-color: var(--cor-fundo-principal); 
+    border: 1px solid var(--cor-borda-suave); 
     border-radius: 6px;
     overflow: hidden;
     text-align: center;
-}
-
-.card-image {
+  }
+  
+  .card-image {
     position: relative;
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.card-image img {
+  }
+  
+  .card-image img {
     display: block;
     width: 100%;
-}
-
-.card-tag {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.05);
-    padding: 4px 8px;
-    font-size: 12px;
-    font-weight: 500;
-    border-top-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-}
-
-.card-body {
+  }
+  
+  .card-tag {
+      position: absolute;
+      top: 10px; 
+      left: 10px; 
+      background-color: rgba(26, 44, 44, 0.7); /* Fundo escuro semitransparente */
+      color: var(--cor-texto-destaque);
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 4px;
+  }
+  
+  .card-body {
     padding: 8px;
-}
-
-.card-body p {
+  }
+  
+  .card-body p {
     font-size: 12px;
     margin-bottom: 12px;
     min-height: 32px;
-}
-
-.btn-card {
-    background: var(--primary-blue-gradient);
-    color: var(--text-light);
-    font-size: 12px;
-    padding: 4px 16px;
-    border-radius: 4px;
-    display: inline-block;
-}
-
-/* --- RODAPÉ --- */
-.main-footer {
-    background-color: var(--bg-dark-gray);
+  }
+  
+  
+  /* --- RODAPÉ --- */
+  .main-footer {
+    background-color: var(--cor-fundo-elementos); 
     padding: 20px 0;
     margin-top: 30px;
-}
-
-.footer-content {
+    border-top: 1px solid var(--cor-borda-suave); /* Adicionado para separar do corpo */
+  }
+  
+  .footer-content {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-}
-
-.footer-logo {
+  }
+  
+  .footer-logo {
     border-radius: 50%;
-}
-
-.footer-info-box {
-    background-color: var(--bg-light);
+  }
+  
+  .footer-info-box {
+    background-color: var(--cor-fundo-principal); 
     padding: 10px;
     border-radius: 13px;
     text-align: center;
     font-size: 10px;
-}
-.footer-info-box h4 {
+  }
+  
+  .footer-info-box h4 {
     font-family: 'Jua', sans-serif;
     font-size: 10px;
     margin-bottom: 5px;
-}
-.footer-info-box .address {
+  }
+  
+  .footer-info-box .address {
     font-family: 'Lateef', sans-serif;
     max-width: 100px;
     line-height: 1.1;
     font-size: 12px;
-}
-.social-icons {
+  }
+  
+  .social-icons {
     display: flex;
     gap: 10px;
     justify-content: center;
-}
-.social-icon {
+  }
+  
+  .social-icon {
     width: 14px;
     height: 14px;
-}
-.social-icon.facebook { background-color: #0866FF; }
-.social-icon.instagram { background-color: #000100; }
-.contact-icon {
+  }
+  
+  /* Cores dos sites (Mudar para a logo futuramente)  */
+  .social-icon.facebook { background-color: #0866FF; }
+  .social-icon.instagram { background-color: #000100; }
+  
+  .contact-icon {
     width: 14px;
     height: 14px;
-    background-color: black;
+    background-color: var(--cor-texto); 
     margin: 0 auto 5px auto;
-}
-
-/* --- AJUSTES PARA TELAS MENORES (RESPONSIVIDADE) --- */
-@media (max-width: 768px) {
+  }
+  
+  /* --- AJUSTES PARA TELAS MENORES (RESPONSIVIDADE) --- */
+  @media (max-width: 768px) {
     .main-nav {
-        display: none; /* Em um projeto real, aqui você adicionaria um menu hambúrguer */
+      display: none;
     }
-
     .about-card {
-        flex-direction: column-reverse; /* Inverte a ordem para imagem vir primeiro */
-        text-align: center;
+      flex-direction: column-reverse;
+      text-align: center;
     }
-
     .projects-grid {
-        flex-direction: column;
-        align-items: center;
+      flex-direction: column;
+      align-items: center;
     }
-}
+/*   } By Gustavo Moura */
