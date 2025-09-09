@@ -37,8 +37,8 @@
   
   /* --- CABEÇALHO --- */
   .main-header {
-    background-color: var(--cor-fundo-elementos); /* Alterado */
-    border-bottom: 1px solid var(--cor-borda-suave); /* Alterado */
+    background-color: var(--cor-fundo-elementos); 
+    border-bottom: 1px solid var(--cor-borda-suave); 
     padding: 10px 0;
   }
   
@@ -114,7 +114,7 @@
   
  /* Estilo base do container */
 .carousel-container {
-    position: relative; /* Essencial para posicionar os botões dentro dele */
+    position: relative; /* Para posicionar os botões dentro dele */
     max-width: 800px;
     margin: 30px auto;
     overflow: hidden; /* Esconde os slides que estão fora da área visível */
@@ -139,7 +139,7 @@
     display: block; /* Remove espaços extras abaixo da imagem */
 }
 
-/* Estilo dos botões de avançar/voltar */
+/* Estilo dos botões de avançar e voltar */
 .carousel-button {
     position: absolute;
     top: 50%;
@@ -172,7 +172,7 @@
     display: none;
 }
 
-/* Container dos indicadores de navegação (bolinhas) */
+/* Container dos indicadores de navegação (bolinhas que fica amostra lá) */
 .carousel-nav {
     position: absolute;
     bottom: 20px;
@@ -197,10 +197,10 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Estilo da bolinha do slide atual */
+/* Estilo da bolinha do slide (Img) atual */
 .carousel-dot.current-slide {
     background-color: white;
-    transform: scale(1.5); /* Destaca a bolinha ativa (Deixa Maior) */
+    transform: scale(1.5); /* Destaca a bolinha ativa (Deixa Maior visualmente) */
 }
   
   /* --- SEÇÃO SOBRE NÓS --- */
@@ -368,7 +368,8 @@
     margin: 0 auto 5px auto;
   }
   
-  /* --- AJUSTES PARA TELAS MENORES (RESPONSIVIDADE) --- */
+  /* --- AJUSTES PARA TELAS MENORES (RESPONSIVIDADE), Fazer alteração aqui ainda para ajustar melhor
+foi só um teste de RESPOSIVIDADE --- */
   @media (max-width: 768px) {
     .main-nav {
       display: none;
@@ -382,3 +383,4 @@
       align-items: center;
     }
 /*   } By Gustavo Moura */
+
