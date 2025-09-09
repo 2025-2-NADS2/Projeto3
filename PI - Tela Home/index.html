@@ -6,14 +6,15 @@
     <title>Instituto Social - Template</title>
     
     <link rel="stylesheet" href="style.css">
+    
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Jua&family=Lateef&family=Jura:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <header class="main-header">
+    <!-- Cabeçalho -->
+<header class="main-header">
         <div class="container">
             <a href="#" class="logo">
                 <img src="https://placehold.co/32x38" alt="Logo do Instituto">
@@ -21,40 +22,40 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#">Sobre Nós</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Como Ajudar</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Nossas Atividades</a></li>
+                    <li><a href="#">Portal do doador</a></li>
+                    <li><a href="#">Trasparência</a></li>
+                    <li><a href="#">Eventos</a></li>
                 </ul>
             </nav>
-            <a href="#" class="btn btn-donate">DOE - AQUI</a>
+            <a href="#" class="btn btn-doador">DOE - AQUI</a>
         </div>
     </header>
-
+<!-- Carousel -->
     <main>
-        
         <div class="carousel-container">
-        <div class="carousel-track">
-            <div class="carousel-slide current-slide">
-                <img src="https://placehold.co/800x400/F4A261/white?text=IMAGEM+1" alt="Imagem 1">
+            <div class="carousel-track">
+                <div class="carousel-slide current-slide">
+                    <img src="https://placehold.co/800x400/F4A261/white?text=IMAGEM+1" alt="Imagem 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://placehold.co/800x400/2A9D8F/white?text=IMAGEM+2" alt="Imagem 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://placehold.co/800x400/E76F51/white?text=IMAGEM+3" alt="Imagem 3">
+                </div>
             </div>
-            <div class="carousel-slide">
-                <img src="https://placehold.co/800x400/2A9D8F/white?text=IMAGEM+2" alt="Imagem 2">
-            </div>
-            <div class="carousel-slide">
-                <img src="https://placehold.co/800x400/E76F51/white?text=IMAGEM+3" alt="Imagem 3">
+    
+            <button class="carousel-button prev">◀</button>
+            <button class="carousel-button next">▶</button>
+    
+            <div class="carousel-nav">
+                <button class="carousel-dot current-slide"></button>
+                <button class="carousel-dot"></button>
+                <button class="carousel-dot"></button>
             </div>
         </div>
-
-        <button class="carousel-button prev">◀</button>
-        <button class="carousel-button next">▶</button>
-
-        <div class="carousel-nav">
-            <button class="carousel-dot current-slide"></button>
-            <button class="carousel-dot"></button>
-            <button class="carousel-dot"></button>
-        </div>
-    </div>
-
+    <!-- Parte da História -->
         <section class="about-section">
             <h2 class="section-title">Nossa História</h2>
             <div class="about-card">
@@ -67,7 +68,7 @@
                 </div>
             </div>
         </section>
-
+<!-- Seleção dos Projetos - Cards -->
         <section class="projects-section">
             <h2 class="section-title">Projetos</h2>
             <div class="projects-grid">
@@ -105,7 +106,7 @@
         </section>
 
     </main>
-
+<!-- Rodapé -->
     <footer class="main-footer">
         <div class="container footer-content">
             <img src="https://placehold.co/41x39" alt="Logo do Rodapé" class="footer-logo">
@@ -129,6 +130,8 @@
             </div>
         </div>
     </footer>
-
-</body>
+    <!-- <script src="script.js"></script> Esse script deve ser inserido antes do fechamento da tag <body> 
+     e após o conteúdo HTML, pois caso contrário pode não funcionar corretamente. (Experiência própria) -->
+    <script src="script.js"></script>
+    </body>
 </html>
