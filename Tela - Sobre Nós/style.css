@@ -1,0 +1,156 @@
+.header{
+    background-color: #EFFBFF;
+    text-decoration: none;
+}
+
+.logo{
+    justify-content: left;
+    align-items: center;
+}
+
+.navbar{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.btn-doe{
+    background-color: rgb(134, 191, 245);
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.container{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+.alma{
+    height:70px;
+}
+
+.imagem{
+    position: relative;
+    display: inline-block;
+}
+
+.imagem img{
+    display: block;
+    width: 100%;
+}
+
+.alma{
+    position: absolute; /* Permite o posicionamento livre */
+  top: 70%; /* Alinha verticalmente ao centro */
+  left: 18%; /* Alinha horizontalmente ao centro */
+  transform: translate(-50%, -50%); /* Corrige o alinhamento */
+  color: rgb(8, 8, 8); /* Cor do texto */
+  padding: 10px;
+  text-align: center;
+}
+
+.historia{
+    background-color: #FFF;
+    justify-content: center;
+    display:grid;
+    font-size: 20;
+}
+
+.ima{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.titulo{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.valores{
+    background-color: #EFFBFF;
+    display: flex;
+    align-items: center;
+     gap: 70px;
+}
+
+.bloco{
+    text-align: center;
+}
+
+.bloco img {
+  width: 100px; /* Tamanho do ícone */
+  height: 80px;
+  background-color: #fdfdfd; /* Cor do círculo do ícone */
+  border-radius: 80%; /* Deixa o ícone em formato de círculo */
+  padding: 15px; /* Adiciona espaço para a imagem interna */
+  align-items: center;
+}
+
+/* Estilo para o título */
+.bloco h2 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+/* Estilo para o parágrafo */
+.bloco p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.fundador{
+    text-align: center;
+    display: flex;
+}
+
+.fun{
+flex: 1;
+padding: 50px;
+}
+
+.fun h2 {
+  color: #000000; /* Cor do título */
+  margin-bottom: 20px;
+}
+
+.fun p {
+  color: #000000;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.fun img {
+  width: 100%; /* Faz a imagem preencher a largura total da coluna */
+  height: 100%; /* Faz a imagem preencher a altura total da coluna */
+  object-fit: cover; /* Recorta a imagem para que ela preencha o espaço sem distorcer */
+  flex: 1;
+}
+
+.foot{
+    background-color: #EFFBFF;
+}
+
+.rodape{
+    display: flex; /* Habilita o Flexbox para alinhar os itens horizontalmente */
+    align-items: center;
+    text-align: center; /* Alinha os itens verticalmente no centro */
+    gap: 50px; /* Cria um espaço entre os blocos */
+    padding: 40px 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.contato{
+    display: grid; /* Habilita o Flexbox para alinhar os itens horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    gap: 10px; /* Cria um espaço entre os blocos */
+    padding: 40px 20px;
+}
