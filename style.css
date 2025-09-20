@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #FFFFFF;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-header {
+    background-color: #F8F9FA;
+    padding: 15px 0;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #000;
+}
+
+.btn-cta {
+    background-color: #A7F5E9;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid #91DDCF;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #91DDCF;
+}
+
+
+.hero-section {
+    background-color: #FFEAE8;
+    height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-section .container {
+    background-image: url('https://via.placeholder.com/400x300.png?text=Foto');
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: right;
+}
+
+.intro-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.intro-section p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.donation-plan-section {
+    background-color: #F0FFFF;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.donation-plan-section h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.donation-toggle {
+    margin-bottom: 40px;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #888;
+}
+
+.toggle-btn.active {
+    background-color: #A7F5E9;
+    color: #333;
+    border-radius: 20px;
+}
+
+.donation-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+}
+
+.option-card {
+    background-color: #fff;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    padding: 20px;
+    width: 32%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.option-img {
+    width: 60px;
+    height: 60px;
+    background-color: #FFEAE8;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.option-details {
+    flex: 1;
+}
+.option-details h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.option-details p {
+    font-size: 14px;
+    color: #777;
+}
+.option-action {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.option-action .price {
+    font-weight: 600;
+}
+.option-action a {
+    color: #333;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+.form-section {
+    padding: 60px 0;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    border: 1px solid #EAEAEA;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.form-column h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: 600;
+    width: 80px; 
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #A7F5E9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #91DDCF;
+}
+
+.payment-option label {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.payment-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+}
+
+
+.main-footer {
+    background-color: #F8F9FA;
+    padding: 40px 0;
+    border-top: 1px solid #EAEAEA;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.footer-item span {
+    font-weight: 600;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+.social-icons a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+}
