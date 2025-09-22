@@ -1,156 +1,173 @@
-.header{
-    background-color: #EFFBFF;
-    text-decoration: none;
+/* --- CABEÇALHO --- */
+.header {
+  background-color: var(--cor-fundo-principal);
+  text-decoration: none;
 }
 
-.logo{
-    justify-content: left;
-    align-items: center;
-}
-
-.navbar{
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    padding: 20px;
-    text-decoration: none;
-}
-
-.btn-doe{
-    background-color: rgb(134, 191, 245);
-    border-radius: 20px;
-    text-decoration: none;
-}
-
-.container{
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
-}
-
-.alma{
-    height:70px;
-}
-
-.imagem{
-    position: relative;
-    display: inline-block;
-}
-
-.imagem img{
-    display: block;
-    width: 100%;
-}
-
-.alma{
-    position: absolute; /* Permite o posicionamento livre */
-  top: 70%; /* Alinha verticalmente ao centro */
-  left: 18%; /* Alinha horizontalmente ao centro */
-  transform: translate(-50%, -50%); /* Corrige o alinhamento */
-  color: rgb(8, 8, 8); /* Cor do texto */
-  padding: 10px;
-  text-align: center;
-}
-
-.historia{
-    background-color: #FFF;
-    justify-content: center;
-    display:grid;
-    font-size: 20;
-}
-
-.ima{
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-}
-
-.titulo{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.valores{
-    background-color: #EFFBFF;
-    display: flex;
-    align-items: center;
-     gap: 70px;
-}
-
-.bloco{
-    text-align: center;
-}
-
-.bloco img {
-  width: 100px; /* Tamanho do ícone */
-  height: 80px;
-  background-color: #fdfdfd; /* Cor do círculo do ícone */
-  border-radius: 80%; /* Deixa o ícone em formato de círculo */
-  padding: 15px; /* Adiciona espaço para a imagem interna */
+.logo {
+  justify-content: left;
   align-items: center;
 }
 
-/* Estilo para o título */
-.bloco h2 {
-  font-size: 20px;
-  color: #333;
-  margin-top: 15px;
+.navbar {
   justify-content: space-between;
+  align-items: center;
+  display: flex;
+  padding: 20px;
+  text-decoration: none;
 }
 
-/* Estilo para o parágrafo */
+/* Botão "Doe" */
+.btn-doe {
+  background-color: var(--cor-destaque);
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--cor-texto-destaque);
+  font-family: 'Jura', sans-serif;
+  font-size: 14px;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-doe:hover {
+  background-color: var(--cor-destaque-hover);
+}
+
+/* --- CONTAINER --- */
+.container {
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+}
+
+/* --- TEXTO SOBRE A IMAGEM --- */
+.alma {
+  position: absolute;
+  top: 70%;
+  left: 18%;
+  transform: translate(-50%, -50%);
+  color: var(--cor-texto);
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.imagem {
+  position: relative;
+  display: inline-block;
+}
+
+.imagem img {
+  display: block;
+  width: 100%;
+}
+
+/* --- SEÇÃO HISTÓRIA --- */
+.historia {
+  background-color: var(--cor-fundo-elementos);
+  justify-content: center;
+  display: grid;
+  font-size: 20px;
+  color: var(--cor-texto);
+}
+
+.ima {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.titulo {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/* --- SEÇÃO VALORES --- */
+.valores {
+  background-color: var(--cor-fundo-principal);
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.bloco {
+  text-align: center;
+}
+
+.bloco img {
+  width: 100px;
+  height: 80px;
+  background-color: var(--cor-fundo-elementos);
+  border-radius: 80%;
+  padding: 15px;
+  align-items: center;
+}
+
+/* Título dentro do bloco */
+.bloco h2 {
+  font-size: 20px;
+  color: var(--cor-texto);
+  margin-top: 15px;
+  font-family: 'Jua', sans-serif;
+}
+
+/* Texto do bloco */
 .bloco p {
-  color: #666;
+  color: #666; /* Mantive o cinza para contraste */
   font-size: 16px;
   line-height: 1.5;
   margin-top: 10px;
 }
 
-.fundador{
-    text-align: center;
-    display: flex;
+/* --- SEÇÃO FUNDADOR --- */
+.fundador {
+  text-align: center;
+  display: flex;
+  gap: 20px;
 }
 
-.fun{
-flex: 1;
-padding: 50px;
+.fun {
+  flex: 1;
+  padding: 50px;
 }
 
 .fun h2 {
-  color: #000000; /* Cor do título */
+  color: var(--cor-texto);
   margin-bottom: 20px;
 }
 
 .fun p {
-  color: #000000;
+  color: var(--cor-texto);
   line-height: 1.6;
   margin-bottom: 20px;
 }
 
 .fun img {
-  width: 100%; /* Faz a imagem preencher a largura total da coluna */
-  height: 100%; /* Faz a imagem preencher a altura total da coluna */
-  object-fit: cover; /* Recorta a imagem para que ela preencha o espaço sem distorcer */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   flex: 1;
+  border-radius: 10px;
 }
 
-.foot{
-    background-color: #EFFBFF;
+/* --- RODAPÉ --- */
+.foot {
+  background-color: var(--cor-fundo-principal);
 }
 
-.rodape{
-    display: flex; /* Habilita o Flexbox para alinhar os itens horizontalmente */
-    align-items: center;
-    text-align: center; /* Alinha os itens verticalmente no centro */
-    gap: 50px; /* Cria um espaço entre os blocos */
-    padding: 40px 20px;
-    margin: 0;
-    padding: 0;
+.rodape {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 50px;
+  padding: 40px 20px;
+  margin: 0;
 }
 
-.contato{
-    display: grid; /* Habilita o Flexbox para alinhar os itens horizontalmente */
-    align-items: center; /* Alinha os itens verticalmente no centro */
-    gap: 10px; /* Cria um espaço entre os blocos */
-    padding: 40px 20px;
+.contato {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  padding: 40px 20px;
 }
