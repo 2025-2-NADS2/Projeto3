@@ -1,0 +1,7 @@
+Guia de Estilo/Paleta de Cores
+
+https://www.figma.com/proto/S4rMB6A2JR78VKQK253J3Q/Style-Guidelines--Community-?node-id=227-995&t=YpjiNTNUpKKshPtg-1
+
+Fluxograma do Web Site
+
+https://www.figma.com/board/dBx9x8m110tc051UoVbquD/Untitled?node-id=0-1&t=ncbszuXSLG2PUxDC-1
