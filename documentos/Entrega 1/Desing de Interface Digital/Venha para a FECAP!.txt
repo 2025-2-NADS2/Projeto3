@@ -5,3 +5,9 @@ https://www.figma.com/proto/S4rMB6A2JR78VKQK253J3Q/Style-Guidelines--Community-?
 Fluxograma do Web Site
 
 https://www.figma.com/board/dBx9x8m110tc051UoVbquD/Untitled?node-id=0-1&t=ncbszuXSLG2PUxDC-1
+
+Protótipo Principal
+https://www.figma.com/proto/VhhAgjJEKrCTdt4hqpeASb/Wireframe-Designer--Community-?node-id=4-249&p=f&t=8iQMxxt2we54fGS9-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1
+
+Protótipo Secundário 
+https://www.figma.com/design/PIEEVyNl4g7wZVJcaCcqG6/Prot%C3%B3tipo?node-id=0-1&t=zAq0cQwq0AVKWJb8-1
