@@ -1,0 +1,67 @@
+/* --- RODAPÉ --- */
+.mainFooter {
+    background-color: white;
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 1px solid var(--grey-3);
+  }
+  
+  .footerContent {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .footerLogo {
+    border-radius: 50%;
+  }
+  
+  .footerInfoBox {
+    background-color: var(--grey-4);
+    padding: 10px;
+    border-radius: 13px;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .footerInfoBox h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .footerInfoBox .address {
+    font-family: 'Open Sans', sans-serif;
+    max-width: 100px;
+    line-height: 1.1;
+    font-size: 12px;
+  }
+  
+  .socialIcons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .socialIcon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .socialIcon.facebook {
+    background-color: var(--cor-primary);
+  }
+  
+  .socialIcon.instagram {
+    background-color: var(--black-1);
+  }
+  
+  .contactIcon {
+    width: 14px;
+    height: 14px;
+    background-color: var(--black-1);
+    margin: 0 auto 5px auto;
+  }

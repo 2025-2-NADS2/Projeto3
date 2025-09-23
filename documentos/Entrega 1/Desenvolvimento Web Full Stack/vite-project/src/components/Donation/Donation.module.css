@@ -1,0 +1,210 @@
+/* Importação da fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.heroSection {
+  background-color: #FFEAE8;
+  height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  background-image: url('https://via.placeholder.com/400x300.png?text=Foto');
+  background-repeat: no-repeat;
+  background-position: left center;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.heroContent h1 {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translate(-50%, -50%);
+  color: var(--cor-texto);
+  padding: 10px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.introSection {
+  padding: 60px 0;
+  text-align: center;
+  color: var(--cor-texto);
+}
+
+.introSection p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.donationPlanSection {
+  background-color: var(--cor-fundo-principal);
+  padding: 60px 0;
+  text-align: center;
+  color: var(--cor-texto);
+}
+
+.donationPlanSection h2 {
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.donationToggle {
+  margin-bottom: 40px;
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #888;
+}
+
+.toggleBtn.active {
+  background-color: var(--cor-destaque);
+  color: #333;
+  border-radius: 20px;
+}
+
+.donationOptions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: left;
+}
+
+.optionCard {
+  background-color: var(--cor-fundo-elementos);
+  border: 1px solid var(--cor-borda-suave);
+  border-radius: 8px;
+  padding: 20px;
+  width: 32%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.optionImg {
+  width: 60px;
+  height: 60px;
+  background-color: #FFEAE8;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin-right: 15px;
+}
+
+.optionDetails {
+  flex: 1;
+}
+
+.optionDetails h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: var(--cor-texto);
+}
+
+.optionDetails p {
+  font-size: 14px;
+  color: #777;
+}
+
+.optionAction {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.optionAction .price {
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+.optionAction a {
+  color: var(--cor-texto);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.formSection {
+  padding: 60px 0;
+  color: var(--cor-texto);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  border: 1px solid var(--cor-borda-suave);
+  padding: 40px;
+  border-radius: 8px;
+  background-color: var(--cor-fundo-elementos);
+}
+
+.formColumn h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  width: 80px;
+  color: var(--cor-texto);
+}
+
+.inputGroup input[type="text"],
+.inputGroup input[type="email"],
+.inputGroup input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.paymentOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cor-destaque);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #91DDCF;
+}
+
+.paymentOption label {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--cor-texto);
+}
+
+.paymentOption input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}

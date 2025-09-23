@@ -1,0 +1,210 @@
+/* Estilo base do container */
+.carouselContainer {
+    position: relative;
+    max-width: 800px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* O "trilho" que segura todos os slides */
+  .carouselTrack {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Cada slide individual */
+  .carouselSlide {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .carouselSlide img {
+    width: 100%;
+    display: block;
+  }
+  
+  /* Estilo dos botões de avançar e voltar */
+  .carouselButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+  
+  .carouselButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .carouselButton.prev {
+    left: 15px;
+  }
+  
+  .carouselButton.next {
+    right: 15px;
+  }
+  
+  .carouselButton.isHidden {
+    display: none;
+  }
+  
+  /* Container dos indicadores de navegação */
+  .carouselNav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Estilo de cada bolinha */
+  .carouselDot {
+    border: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .carouselDot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .carouselDot.currentSlide {
+    background-color: white;
+    transform: scale(1.5);
+  }
+  
+  /* --- SEÇÃO SOBRE NÓS --- */
+  .sectionTitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    background-color: var(--cor-primary);
+    color: white;
+    max-width: 150px;
+    margin: 40px auto -15px auto;
+    padding: 5px;
+    border-radius: 4px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .aboutCard {
+    background-color: white;
+    border-radius: 23px;
+    padding: 40px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid var(--grey-3);
+  }
+  
+  .aboutText {
+    flex: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  
+  .founderName {
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .aboutImage img {
+    width: 131px;
+    height: 131px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--grey-3);
+  }
+  
+  /* --- SEÇÃO DE PROJETOS --- */
+  .projectsSection {
+    background-color: white;
+    padding: 50px 0;
+    margin-top: 40px;
+  }
+  
+  .projectsGrid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-top: 30px;
+  }
+  
+  .projectCard {
+    width: 300px;
+    background-color: var(--grey-4);
+    border: 1px solid var(--grey-3);
+    border-radius: 6px;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .cardImage {
+    position: relative;
+  }
+  
+  .cardImage img {
+    display: block;
+    width: 100%;
+  }
+  
+  .cardTag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--cor-secondary);
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  
+  .cardBody {
+    padding: 8px;
+  }
+  
+  .cardBody p {
+    font-size: 12px;
+    margin-bottom: 12px;
+    min-height: 32px;
+  }
+  
+  /* Botão para os cards de projeto */
+  .btnCard {
+    background: var(--primary-blue-gradient);
+    color: white;
+    font-size: 12px;
+    padding: 4px 16px;
+  }
+  
+  /* --- RESPONSIVIDADE --- */
+  @media (max-width: 768px) {
+    .aboutCard {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+    .projectsGrid {
+      flex-direction: column;
+      align-items: center;
+    }
+  }

@@ -1,0 +1,73 @@
+/* --- CABEÇALHO --- */
+.mainHeader {
+    background-color: white;
+    border-bottom: 1px solid var(--grey-3);
+    padding: 10px 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    display: block;
+  }
+  
+  .mainNav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+  }
+  
+  .mainNav a {
+    text-decoration: none;
+    color: var(--black-2);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .mainNav a:hover {
+    color: var(--cor-primary);
+    background-color: transparent;
+  }
+  
+  /* --- BOTÕES --- */
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  .btnDoador {
+    background-color: var(--cor-secondary);
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .btnDoador:hover {
+    background-color: var(--cor-primary);
+  }
+  
+  /* --- RESPONSIVIDADE --- */
+  @media (max-width: 768px) {
+    .mainNav {
+      display: none;
+    }
+  }

@@ -1,0 +1,50 @@
+/* --- ESTILOS GERAIS E RESET --- */
+:root {
+  /* Paleta de Cores */
+  --cor-primary: #1A237E; /* Cor Primária */
+  --cor-secondary: #F4511E; /* Cor Secundária */
+  --cor-info: #2196F3;
+  --cor-success: #4CAF50;
+  --cor-warning: #FFC107;
+  --cor-error: #FF3D00;
+  
+  /* Cores de Grey */
+  --grey-1: #9E9E9E;
+  --grey-2: #BDBDBD;
+  --grey-3: #E0E0E0;
+  --grey-4: #EEEEEE;
+  --grey-5: #FAFAFA;
+  
+  /* Cores de Black */
+  --black-1: #212121;
+  --black-2: #424242;
+  --black-3: #616161;
+  
+  /* Gradiente */
+  --primary-blue-gradient: linear-gradient(90deg, #397BF6 0%, #3572E4 48%, #214890 100%);
+}
+
+/* --- FONTES --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+
+/* --- RESET BÁSICO --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--grey-5);
+  color: var(--black-1);
+}
+
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
