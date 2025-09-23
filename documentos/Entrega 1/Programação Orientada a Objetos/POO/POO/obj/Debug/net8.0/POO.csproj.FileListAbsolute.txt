@@ -1,0 +1,4 @@
+C:\Users\User\OneDrive\Área de Trabalho\casa pi\POO\obj\Debug\net8.0\POO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\Área de Trabalho\casa pi\POO\obj\Debug\net8.0\POO.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\Área de Trabalho\casa pi\POO\obj\Debug\net8.0\POO.AssemblyInfo.cs
+C:\Users\User\OneDrive\Área de Trabalho\casa pi\POO\obj\Debug\net8.0\POO.csproj.CoreCompileInputs.cache

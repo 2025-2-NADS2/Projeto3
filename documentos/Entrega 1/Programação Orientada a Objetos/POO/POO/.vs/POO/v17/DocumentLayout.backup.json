@@ -1,0 +1,91 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F3295C5C-7B5E-4EA8-9871-4F4EC1B4ADB4}|InstitutoAlma.csproj|c:\\users\\user\\onedrive\\\u00E1rea de trabalho\\casa pi\\poo\\services\\doadorservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3295C5C-7B5E-4EA8-9871-4F4EC1B4ADB4}|InstitutoAlma.csproj|solutionrelative:services\\doadorservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3295C5C-7B5E-4EA8-9871-4F4EC1B4ADB4}|InstitutoAlma.csproj|c:\\users\\user\\onedrive\\\u00E1rea de trabalho\\casa pi\\poo\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3295C5C-7B5E-4EA8-9871-4F4EC1B4ADB4}|InstitutoAlma.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3295C5C-7B5E-4EA8-9871-4F4EC1B4ADB4}|InstitutoAlma.csproj|c:\\users\\user\\onedrive\\\u00E1rea de trabalho\\casa pi\\poo\\models\\doador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3295C5C-7B5E-4EA8-9871-4F4EC1B4ADB4}|InstitutoAlma.csproj|solutionrelative:models\\doador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3295C5C-7B5E-4EA8-9871-4F4EC1B4ADB4}|InstitutoAlma.csproj|c:\\users\\user\\onedrive\\\u00E1rea de trabalho\\casa pi\\poo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3295C5C-7B5E-4EA8-9871-4F4EC1B4ADB4}|InstitutoAlma.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Doadorservices.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\Services\\Doadorservices.cs",
+              "RelativeDocumentMoniker": "Services\\Doadorservices.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\Services\\Doadorservices.cs",
+              "RelativeToolTip": "Services\\Doadorservices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T20:12:38.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Doador.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\Models\\Doador.cs",
+              "RelativeDocumentMoniker": "Models\\Doador.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\Models\\Doador.cs",
+              "RelativeToolTip": "Models\\Doador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T20:01:35.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "usuario.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\Models\\usuario.cs",
+              "RelativeDocumentMoniker": "Models\\usuario.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\Models\\usuario.cs",
+              "RelativeToolTip": "Models\\usuario.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAgwA4AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T20:01:10.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\\u00C1rea de Trabalho\\casa pi\\POO\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T19:57:00.526Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
