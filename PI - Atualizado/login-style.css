@@ -1,0 +1,147 @@
+/* Estilos para as páginas de Login e Cadastro */
+body {
+    line-height: 1.6;
+}
+
+.login-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Coluna do Formulário */
+.form-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: var(--background-white);
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-wrapper .logo {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    display: block;
+    text-align: center;
+}
+
+/* Abas de Login */
+.login-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    color: var(--background-white);
+}
+
+/* Formulários */
+.login-form {
+    display: none; /* Escondido por padrão */
+}
+
+.login-form.active {
+    display: block; /* Visível quando ativo */
+}
+
+.login-form h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.login-form p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* Coluna da Imagem */
+.image-column {
+    flex: 1.2;
+    background: url('https://placehold.co/800x1200/1A3D8D/FFFFFF?text=IA') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px;
+    color: var(--background-white);
+}
+
+.image-text h1 {
+    font-size: 2.8rem;
+    color: var(--background-white);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.image-text p {
+    font-size: 1.2rem;
+    max-width: 450px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .image-column {
+        display: none; /* Esconde a imagem em telas pequenas */
+    }
+    .form-column {
+        flex: 1 1 100%;
+    }
+}

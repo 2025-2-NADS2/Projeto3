@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Instituto Alma</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login-style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo"><strong>IA</strong> Instituto Alma</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="atividades.html">Nossas Atividades</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="transparencia.html">Transparência</a></li>
+                    <li><a href="ouvidoria.html">Ouvidoria</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="doe.html" class="btn btn-primary">Doe Agora</a>
+            </div>
+        </div>
+    </header>
+<body>
+    <div class="login-container">
+        <div class="form-column">
+            <div class="form-wrapper">
+                <a href="index.html" class="logo"><strong>IA</strong> Instituto Alma</a>
+                <div class="login-tabs">
+                    <button class="tab-btn active" data-form="doador">Sou Doador</button>
+                    <button class="tab-btn" data-form="admin">Sou Administrador</button>
+                </div>
+
+                <form id="form-doador" class="login-form active">
+                    <h2>Acesse seu portal</h2>
+                    <p>Acompanhe o impacto da sua doação.</p>
+                    <div class="input-group">
+                        <label for="email-doador">Email</label>
+                        <input type="email" id="email-doador" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="senha-doador">Senha</label>
+                        <input type="password" id="senha-doador" required>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+                    <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+                    <p class="signup-link">Não tem uma conta? <a href="cadastro.html">Cadastre-se agora</a></p>
+                </form>
+
+                <form id="form-admin" class="login-form">
+                    <h2>Painel Administrativo</h2>
+                    <p>Acesso exclusivo para a equipe do instituto.</p>
+                    <div class="input-group">
+                        <label for="email-admin">Email</label>
+                        <input type="email" id="email-admin" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="senha-admin">Senha</label>
+                        <input type="password" id="senha-admin" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <div class="image-column">
+            <div class="image-text">
+                <h1>Juntos, construímos um futuro melhor.</h1>
+                <p>Sua participação é a peça que faltava para transformar ainda mais vidas.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+ </body>
+</html>

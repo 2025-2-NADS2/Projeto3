@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ouvidoria - Instituto Alma</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo"><strong>IA</strong> Instituto Alma</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="atividades.html">Nossas Atividades</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="transparencia.html">Transparência</a></li>
+                    <li><a href="ouvidoria.html">Ouvidoria</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="doe.html" class="btn btn-primary">Doe Agora</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section-simple">
+            <div class="container">
+                <h1>Ouvidoria</h1>
+                <p>Este é o seu canal direto conosco. Envie sua sugestão, dúvida ou reclamação.</p>
+            </div>
+        </section>
+
+        <section class="ouvidoria-section">
+            <div class="container">
+                <form class="ouvidoria-form">
+                    <div class="input-group">
+                        <label for="nome">Seu Nome</label>
+                        <input type="text" id="nome" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Seu E-mail</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="assunto">Assunto</label>
+                        <input type="text" id="assunto" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="site-footer">
+        </footer>
+</body>
+</html>

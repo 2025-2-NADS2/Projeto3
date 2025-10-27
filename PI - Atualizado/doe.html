@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça sua Doação - Instituto Alma</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo"><strong>IA</strong> Instituto Alma</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="atividades.html">Nossas Atividades</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="transparencia.html">Transparência</a></li>
+                    <li><a href="ouvidoria.html">Ouvidoria</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="doe.html" class="btn btn-primary">Doe Agora</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section-simple">
+            <div class="container">
+                <h1>Sua doação transforma vidas</h1>
+                <p>Cada contribuição, não importa o tamanho, nos ajuda a construir um futuro melhor.</p>
+            </div>
+        </section>
+
+        <section class="donation-page-section">
+            <div class="container">
+                <form class="donation-wrapper">
+                    <div class="donation-form-container">
+                        <h3>1. Escolha um valor para doar</h3>
+                        <div class="amount-selector">
+                            <button type="button" class="amount-option">R$ 30</button>
+                            <button type="button" class="amount-option active">R$ 50</button>
+                            <button type="button" class="amount-option">R$ 100</button>
+                        </div>
+                        <div class="input-group">
+                            <label for="custom-amount">Ou digite outro valor (R$)</label>
+                            <input type="text" id="custom-amount" placeholder="Ex: 75">
+                        </div>
+                        <hr>
+                        <h3>2. Seus Dados</h3>
+                         <div class="input-group">
+                            <label for="name">Nome completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="cpf-doe">CPF (para recibos)</label>
+                            <input type="text" id="cpf-doe" placeholder="000.000.000-00" required>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="create-account">
+                            <label for="create-account">Quero criar uma conta com estes dados para acompanhar minhas doações.</label>
+                        </div>
+
+                        <hr>
+                        <h3>3. Pagamento</h3>
+                        <p class="payment-info">Após confirmar, você será redirecionado para um ambiente seguro para concluir o pagamento via PIX.</p>
+                        <button type="submit" class="btn btn-primary btn-full">Confirmar Doação de R$ 50</button>
+                    </div>
+
+                    <div class="donation-impact-container">
+                        <h3>Veja o impacto da sua doação</h3>
+                        <div class="impact-card">
+                            <h4>Com R$ 50 você garante:</h4>
+                            <ul>
+                                <li>✔ 1 cesta básica para uma família</li>
+                                <li>✔ Kit de higiene para uma gestante</li>
+                                <li>✔ Material escolar para uma criança</li>
+                            </ul>
+                        </div>
+                        <p>Seu apoio é o que torna nosso trabalho possível. Agradecemos profundamente por se juntar a nós nesta causa.</p>
+                         <img src="images/Capa.Instituto.Criança.JPG" alt="Crianças beneficiadas pelo Instituto Alma">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        </footer>
+    <script src="script.js"></script>
+</body>
+</html>

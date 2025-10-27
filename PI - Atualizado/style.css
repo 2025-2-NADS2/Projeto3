@@ -1,0 +1,768 @@
+/* =============================================
+   1. VARIÁVEIS GLOBAIS (Baseado nos Guias de Estilo)
+   ============================================= */
+:root {
+    /* Cores Primárias (do Manual - Instituto Alma.pdf) */
+    --primary-color: #111F44; /* Azul escuro principal [cite: 270] */
+    --primary-light: #C5FFEE; /* Verde-água claro (Usado para 'alma') [cite: 269] */
+    --primary-background: #F3FFF1; /* Fundo quase branco [cite: 274] */
+
+    /* Cores Secundárias (do Manual e Guia de Estilo) */
+    --secondary-color: #C6421E; /* Laranja/Vermelho para botões "Doe" [cite: 281] */
+    --secondary-accent: #DD5533; /* Tom do Guia de Estilo (Laranja) */
+    
+    /* Cores de Texto (do Guia de Estilo) */
+    --text-dark: #1A3D8D; /* Azul escuro para textos (Guia de Estilo) */
+    --text-light: #5A78A0; /* Cinza-azulado para parágrafos (Guia de Estilo) */
+    --text-white: #FFFFFF;
+    
+    /* Cores de Estado (do Guia de Estilo) */
+    --state-success: #33A054;
+    --state-info: #1A7BFF;
+    --state-warning: #F5C700;
+    --state-error: #D92E2E;
+
+    /* Layout */
+    --background-white: #FFFFFF;
+    --border-color: #E0E0E0;
+    --container-width: 1140px;
+    --header-height: 80px;
+    
+    /* Fonte (Declarada nos HTMLs e Guia de Estilo) */
+    --font-family: 'Open Sans', sans-serif; /* [cite: 64, 71] */
+}
+
+/* =============================================
+   2. ESTILOS GLOBAIS (Base "Clean")
+   ============================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--background-white);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--text-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family);
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* =============================================
+   3. BOTÕES (Baseado no Guia de Estilo)
+   ============================================= */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--text-white);
+}
+
+.btn-primary:hover {
+    background-color: #a53718; /* Tom mais escuro de --secondary-color */
+    color: var(--text-white);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* =============================================
+   4. HEADER E NAVEGAÇÃO
+   ============================================= */
+.main-header {
+    background-color: var(--background-white);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--primary-color);
+}
+.logo strong {
+    font-weight: 700;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--secondary-color);
+}
+
+.header-buttons .btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+}
+
+/* =============================================
+   5. SEÇÃO HERO (index.html) - Carrossel
+   ============================================= */
+.hero-section {
+    height: calc(100vh - var(--header-height));
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-color);
+}
+
+.hero-carousel {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-track {
+    list-style: none;
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide.current-slide {
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6); /* Escurece a imagem para o texto aparecer */
+}
+
+/* Botões do Carrossel */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+.carousel-button.prev { left: 20px; }
+.carousel-button.next { right: 20px; }
+.carousel-button:hover { background: rgba(0, 0, 0, 0.5); }
+
+/* Navegação (Dots) */
+.carousel-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: transparent;
+    cursor: pointer;
+}
+.carousel-dot.current-slide {
+    background: white;
+}
+
+/* Texto sobre o Carrossel */
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    color: var(--text-white);
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+}
+
+.hero-text-overlay h1 {
+    color: var(--text-white);
+    font-size: 3.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.hero-text-overlay p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.hero-text-overlay .btn-secondary {
+    border-color: var(--text-white);
+    color: var(--text-white);
+    font-size: 1.1rem;
+}
+.hero-text-overlay .btn-secondary:hover {
+    background-color: var(--text-white);
+    color: var(--primary-color);
+}
+
+/* =============================================
+   6. HERO SIMPLES (Demais páginas)
+   ============================================= */
+.hero-section-simple {
+    background-color: var(--primary-color);
+    padding: 60px 0;
+    color: var(--text-white);
+}
+.hero-section-simple h1 {
+    color: var(--text-white);
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+.hero-section-simple p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+/* =============================================
+   7. SEÇÕES (index.html)
+   ============================================= */
+.activities-section {
+    background-color: #f9f9f9;
+}
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.cta-section {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    text-align: center;
+}
+.cta-section h2 {
+    color: var(--text-white);
+}
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+.cta-section .btn-secondary {
+    border-color: var(--text-white);
+    color: var(--text-white);
+}
+.cta-section .btn-secondary:hover {
+    background-color: var(--text-white);
+    color: var(--primary-color);
+}
+
+.how-to-help-section {
+    padding-bottom: 40px;
+}
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.transparency-section {
+    background-color: #f9f9f9;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.stat-item {
+    background-color: var(--background-white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+/* =============================================
+   8. CARDS (Baseado na Captura de Tela)
+   ============================================= */
+/* Usado em: 
+   - .activities-grid .activity-card (index.html)
+   - .events-grid .event-grid-card (eventos.html, atividades.html)
+   - .events-slider-track .event-slide-card (index.html)
+*/
+.activity-card,
+.event-grid-card,
+.event-slide-card {
+    background-color: var(--background-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-grid-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Necessário para o card de evento slider */
+.event-slide-card {
+    flex-shrink: 0;
+    width: 300px; /* Largura fixa para o slide */
+    scroll-snap-align: start;
+}
+
+.activity-card,
+.event-slide-card {
+    /* Placeholder - adicionei altura para visualização */
+    height: 380px; 
+    border: 1px solid var(--border-color);
+}
+
+.event-grid-card a {
+    display: block;
+    color: var(--text-light);
+}
+.event-grid-card img {
+    width: 100%;
+    height: 200px; /* Altura fixa para imagem */
+    object-fit: cover;
+}
+.event-grid-card .card-body {
+    padding: 25px;
+}
+.event-grid-card .event-date {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+.event-grid-card h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+}
+.event-grid-card p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+.event-grid-card .card-link {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.event-grid-card a:hover .card-link {
+    text-decoration: underline;
+}
+
+/* =============================================
+   9. CARROSSEL DE EVENTOS (index.html)
+   ============================================= */
+.events-slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.events-slider-header .section-title {
+    text-align: left;
+    margin: 0;
+}
+.events-slider-header .btn-primary {
+    margin-right: 20px;
+}
+.slider-nav .slider-button {
+    width: 45px;
+    height: 45px;
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.slider-nav .slider-button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+}
+.slider-nav .slider-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.events-slider-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.events-slider-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.5s ease;
+}
+
+/* =============================================
+   10. PÁGINA "SOBRE NÓS" (sobre.html)
+   ============================================= */
+.history-section, .founder-section {
+    padding-bottom: 40px;
+}
+.history-content, .founder-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+.history-text p, .founder-text p {
+    margin-bottom: 20px;
+}
+.history-image img, .founder-image img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.values-section {
+    background-color: #f9f9f9;
+}
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.value-card {
+    background: var(--background-white);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+.value-card h3 {
+    color: var(--secondary-color);
+}
+
+/* =============================================
+   11. PÁGINA "DOE" (doe.html)
+   ============================================= */
+.donation-page-section {
+    background-color: #f9f9f9;
+}
+.donation-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    background-color: var(--background-white);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+}
+.donation-form-container hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 30px 0;
+}
+.amount-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.amount-option {
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.amount-option:hover {
+    border-color: var(--secondary-color);
+}
+.amount-option.active {
+    background-color: var(--secondary-color);
+    color: var(--text-white);
+    border-color: var(--secondary-color);
+}
+
+/* Formulários (Inputs Globais) */
+.input-group {
+    margin-bottom: 20px;
+}
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+}
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.donation-impact-container {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+}
+.donation-impact-container h3 {
+    color: var(--primary-color);
+}
+.impact-card {
+    background-color: var(--background-white);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+.impact-card h4 {
+    color: var(--text-dark);
+}
+.impact-card ul {
+    list-style: none;
+    margin-top: 15px;
+}
+.impact-card li {
+    margin-bottom: 5px;
+}
+.donation-impact-container img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+    object-fit: cover;
+    height: 200px;
+}
+
+/* =============================================
+   12. PÁGINA "OUVIDORIA" (ouvidoria.html)
+   ============================================= */
+.ouvidoria-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--background-white);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+}
+
+/* =============================================
+   13. PÁGINA "EVENTOS" e "ATIVIDADES"
+   ============================================= */
+.all-events-section { /* (eventos.html, atividades.html) */
+    background-color: #f9f9f9;
+}
+.events-grid { /* (eventos.html, atividades.html) */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* =============================================
+   14. FOOTER
+   ============================================= */
+.site-footer {
+    background-color: var(--primary-color);
+    color: #a9b8d4; /* Tom mais claro de cinza-azulado */
+    padding: 60px 0 30px 0;
+    /* Adicionei um preenchimento básico já que seu footer está vazio */
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 15px;
+}
+.footer-nav h4, .footer-help h4, .footer-contact h4 {
+    font-size: 1.1rem;
+    color: var(--text-white);
+    margin-bottom: 15px;
+}
+.footer-nav ul, .footer-help ul {
+    list-style: none;
+}
+.footer-nav li, .footer-help li {
+    margin-bottom: 10px;
+}
+.footer-nav a, .footer-help a {
+    color: #a9b8d4;
+}
+.footer-nav a:hover, .footer-help a:hover {
+    color: var(--text-white);
+    text-decoration: underline;
+}
+.footer-bottom {
+    border-top: 1px solid #3a4a75; /* Linha divisória */
+    padding-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* =============================================
+   15. RESPONSIVIDADE (Ajustes básicos)
+   ============================================= */
+@media (max-width: 900px) {
+    .main-nav { display: none; } /* Esconde o menu principal (Menu hamburguer seria necessário) */
+    .hero-text-overlay h1 { font-size: 2.5rem; }
+    .hero-text-overlay p { font-size: 1.1rem; }
+    
+    .history-content, .founder-content { grid-template-columns: 1fr; }
+    .history-image { order: -1; } /* Imagem primeiro no mobile */
+    
+    .donation-wrapper { grid-template-columns: 1fr; }
+    .help-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .header-buttons .btn-secondary { display: none; } /* Esconde "Login" */
+    .stats-grid { grid-template-columns: 1fr; }
+    .events-slider-header { flex-direction: column; gap: 20px; }
+    .amount-selector { grid-template-columns: 1fr; }
+    .donation-wrapper { padding: 20px; }
+}
