@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\lusco\\.nuget\\packages\\": {}
+    "C:\\Users\\gustavo.moura\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lusco\\OneDrive\\Documentos\\GitHub\\Projeto3\\documentos\\Entrega 1\\Programação Orientada a Objetos\\POO\\POO\\InstitutoAlma.csproj",
+      "projectUniqueName": "C:\\Users\\gustavo.moura\\Documents\\GitHub\\documentos\\Entrega 1\\Programação Orientada a Objetos\\POO\\POO\\InstitutoAlma.csproj",
       "projectName": "InstitutoAlma",
-      "projectPath": "C:\\Users\\lusco\\OneDrive\\Documentos\\GitHub\\Projeto3\\documentos\\Entrega 1\\Programação Orientada a Objetos\\POO\\POO\\InstitutoAlma.csproj",
-      "packagesPath": "C:\\Users\\lusco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lusco\\OneDrive\\Documentos\\GitHub\\Projeto3\\documentos\\Entrega 1\\Programação Orientada a Objetos\\POO\\POO\\obj\\",
+      "projectPath": "C:\\Users\\gustavo.moura\\Documents\\GitHub\\documentos\\Entrega 1\\Programação Orientada a Objetos\\POO\\POO\\InstitutoAlma.csproj",
+      "packagesPath": "C:\\Users\\gustavo.moura\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gustavo.moura\\Documents\\GitHub\\documentos\\Entrega 1\\Programação Orientada a Objetos\\POO\\POO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lusco\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\gustavo.moura\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -38,11 +38,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -64,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.414/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.121/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
