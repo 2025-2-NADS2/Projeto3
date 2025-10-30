@@ -766,3 +766,117 @@ section {
     .amount-selector { grid-template-columns: 1fr; }
     .donation-wrapper { padding: 20px; }
 }
+
+/* =============================================
+   16. ESTILOS DO MODAL DE ATIVIDADES
+   ============================================= */
+
+/* Classe helper para travar o scroll */
+html.modal-open,
+body.modal-open {
+    overflow: hidden;
+}
+
+/* O fundo (overlay) - escuro e desfocado */
+.modal-overlay {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    
+    /* Efeito de desfoque */
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Classe que o JS adiciona para mostrar */
+.modal-overlay.show {
+    display: flex; 
+}
+
+/* A caixa de conteúdo do modal */
+.modal-content {
+    background-color: var(--background-white);
+    border-radius: 8px; /* Mesmo radius dos cards */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 650px; 
+    position: relative;
+    max-height: 90vh; /* Permite scroll se o conteúdo for grande */
+    overflow-y: auto; /* Adiciona scroll interno */
+    
+    /* Animação */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease-out;
+}
+
+.modal-overlay.show .modal-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border-color); /* Usa sua variável */
+}
+
+.modal-header h2 {
+    font-family: var(--font-family); /* Usa sua variável */
+    font-size: 2.2rem; /* Mesmo tamanho do h2 global */
+    font-weight: 700;
+    color: var(--text-dark); /* Usa sua variável */
+    margin: 0;
+}
+
+.modal-close-btn {
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--text-light); /* Usa sua variável */
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.modal-close-btn:hover {
+    color: var(--text-dark); /* Usa sua variável */
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-image-main {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 6px; /* Borda levemente menor que a do card */
+    margin-bottom: 20px;
+}
+
+.modal-body p {
+    font-family: var(--font-family); /* Usa sua variável */
+    font-size: 1rem;
+    line-height: 1.6; /* Mesmo line-height global */
+    color: var(--text-light); /* Usa sua variável */
+}
+
+.modal-footer {
+    padding: 10px 20px;   
+    text-align: right; 
+}

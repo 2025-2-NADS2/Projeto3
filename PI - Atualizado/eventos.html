@@ -41,7 +41,11 @@
             <div class="container">
                 <div class="events-grid">
                     <article class="event-grid-card">
-                        <a href="#">
+                        <a href="#"
+                            data-title="Festa de Natal Comunitária"
+                            data-img="https://placehold.co/400x250/1A3D8D/FFFFFF?text=Evento+1"
+                            data-desc="Descrição do evento">
+
                             <img src="https://placehold.co/400x250/1A3D8D/FFFFFF?text=Evento+1" alt="Imagem do Evento">
                             <div class="card-body">
                                 <span class="event-date">15 DEZ 2024</span>
@@ -52,7 +56,10 @@
                         </a>
                     </article>
                     <article class="event-grid-card">
-                        <a href="#">
+                        <a href="#"
+                            data-title="Oficina de Artes para Crianças"
+                            data-img="https://placehold.co/400x250/DD5533/FFFFFF?text=Evento+2"
+                            data-desc="Descrição do evento">
                             <img src="https://placehold.co/400x250/DD5533/FFFFFF?text=Evento+2" alt="Imagem do Evento">
                             <div class="card-body">
                                 <span class="event-date">25 JAN 2025</span>
@@ -63,7 +70,11 @@
                         </a>
                     </article>
                     <article class="event-grid-card">
-                        <a href="#">
+                        <a href="#"
+                            data-title="Dia do Voluntário Alma"
+                            data-img="https://placehold.co/400x250/1A3D8D/FFFFFF?text=Evento+3"
+                            data-desc="Descrição do evento">
+                            
                             <img src="https://placehold.co/400x250/33A054/FFFFFF?text=Evento+3" alt="Imagem do Evento">
                             <div class="card-body">
                                 <span class="event-date">18 FEV 2025</span>
@@ -78,7 +89,64 @@
         </section>
     </main>
     
-    <footer class="site-footer">
-        </footer>
+   <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3 class="footer-logo"><strong>IA</strong> Instituto Alma</h3>
+                    <p>Transformando vidas através da educação, cultura e solidariedade.</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="atividades.html">Atividades</a></li>
+                        <li><a href="eventos.html">Eventos</a></li>
+                        <li><a href="transparencia.html">Transparência</a></li>
+                    </ul>
+                </div>
+                <div class="footer-help">
+                    <h4>Como Ajudar</h4>
+                    <ul>
+                        <li><a href="doe.html">Fazer Doação</a></li>
+                        <li><a href="login.html">Portal do Doador</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>Rua das Flores, 123<br>Centro, São Paulo/SP</p>
+                    <p><a href="ouvidoria.html">Ouvidoria</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©2025 Instituto Alma. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+        <!-- Html do Modal -->
+
+    <div id="activity-modal" class="modal-overlay">
+        <div class="modal-content">
+        
+            <header class="modal-header">
+                <h2 id="modal-title">Título do Projeto</h2>
+                <button id="modal-close" class="modal-close-btn">&times;</button>
+            </header>
+
+            <section class="modal-body">
+                <img id="modal-image" src="https://via.placeholder.com/600x300" alt="Imagem do projeto" class="modal-image-main">
+                <p id="modal-description">Descrição completa do projeto...</p>
+            </section>
+        
+            <footer class="modal-footer">
+                <a href="doe.html" class="btn btn-primary">Quero Ajudar</a>
+            </footer>
+
+        </div>
+    </div>
+
+<script src="detalhe-atividade.js"></script>
+
 </body>
 </html>

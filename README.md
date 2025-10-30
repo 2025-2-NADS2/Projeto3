@@ -1,9 +1,3 @@
-```sh
-Utilize o site <https://www.toptal.com/developers/gitignore> para gerar seu arquivo gitignore e apague este campo.
-
-Vide tutoriais do PI.
-```
-
 # FECAP - Fundação de Comércio Álvares Penteado
 
 <p align="center">
@@ -12,107 +6,73 @@ Vide tutoriais do PI.
 
 # Site Institucional - Instituto Alma
 
-## Global SI 
+<p align="center">
+    <img src="https://placehold.co/800x400/111F44/C5FFEE?text=Projeto+Instituto+Alma" alt="Site do Instituto Alma">
+</p>
 
-## Integrantes: <a href="https://www.linkedin.com/in/gustavomoura3112?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Gustavo Moura</a>
+## Global SI
+
+## Integrantes: <a href="https://www.linkedin.com/in/gustavomoura3112?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Gustavo Moura</a>, <a href="https://www.linkedin.com/in/lucas-soares-corsino-885306288/">Lucas Corsino</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/eduardo-savino-gomes-77833a10/"> Eduardo Savino Gomes</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco de Souza Escobar</a>, <a href="https://www.linkedin.com/in/jbuesso/">José Carlos Buesso Junior</a>, <a href="https://www.linkedin.com/in/ronaldo-araujo-pinto-3542811a/">Ronaldo Araujo Pinto</a>, <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>
 
-## Descrição
+## 📖 Descrição
 
-<p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
-</p>
+Este projeto é um site institucional completo para o **Instituto Alma**, uma organização sem fins lucrativos focada em "promover o desenvolvimento humano e a inclusão social por meio de ações educativas e de solidariedade". O site foi desenvolvido como Projeto Integrado (PI) do curso de Análise e Desenvolvimento de Sistemas da FECAP.
 
+O objetivo é criar um portal digital funcional, moderno e impactante, que sirva como o principal canal de comunicação da ONG, permitindo:
+* Apresentar a história, missão e valores do Instituto.
+* Divulgar as atividades e eventos realizados.
+* Captar doações de forma transparente.
+* Oferecer um portal para doadores e administradores (login/cadastro).
+* Manter um canal de Ouvidoria para contato direto.
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-<br><br>
-Meu projeto ajuda estudantes FECAP a configurarem seus githubs.
-<br><br>
-May the force be with you!
-<br><br>
+O design segue uma estética *clean* e profissional, baseada no Guia de Estilo e Manual de Branding fornecidos.
+
+## 🚀 Tecnologias Utilizadas
+
+O projeto utiliza as tecnologias web fundamentais e está planejado para evoluir para uma aplicação full-stack. As tecnologias centrais do projeto são:
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-512BD4?style=for-the-badge&logo=c-sharp&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+* **Front-end:** HTML5, CSS3, JavaScript (e futuramente React).
+* **Back-end:** Node.js, C#.
+* **Banco de Dados:** MySQL (gerenciado com SQL Workbench).
 
 ## 🛠 Estrutura de pastas
 
--Raiz<br>
-|<br>
-|-->documentos<br>
-  &emsp;|-->antigos<br>
-  &emsp;|Documentação.docx<br>
-|-->executáveis<br>
-  &emsp;|-->windows<br>
-  &emsp;|-->android<br>
-  &emsp;|-->HTML<br>
-|-->imagens<br>
-|-->src<br>
-  &emsp;|-->Backend<br>
-  &emsp;|-->Frontend<br>
-|readme.md<br>
-
-A pasta raiz contem dois arquivos que devem ser alterados:
-
-<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre seu projeto. O mesmo que você está lendo agora.
-
-Há também 4 pastas que seguem da seguinte forma:
-
-<b>documentos</b>: Toda a documentação estará nesta pasta.
-
-<b>executáveis</b>: Binários e executáveis do projeto devem estar nesta pasta.
-
-<b>imagens</b>: Imagens do sistema
-
-<b>src</b>: Pasta que contém o código fonte.
+A estrutura de arquivos do projeto está organizada da seguinte forma:
 
 ## 🛠 Instalação
 
-<b>Android:</b>
+Este projeto é um site estático (front-end puro). Não há necessidade de instalação de pacotes ou builds.
 
-Faça o Download do JOGO.apk no seu celular.
-Execute o APK e siga as instruções de seu telefone.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```
-
-<b>Windows:</b>
-
-Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```
-
-<b>HTML:</b>
-
-Não há instalação!
-Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
+**Instruções:**
+1.  Faça o clone deste repositório: `git clone https://[URL-DO-SEU-REPOSITORIO].git`
+2.  Navegue até a pasta raiz do projeto.
+3.  Abra o arquivo `index.html` em qualquer navegador web moderno (Google Chrome, Firefox, Microsoft Edge, etc.).
 
 ## 💻 Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
+Para editar ou contribuir com o projeto, você precisará de:
 
-Para abrir este projeto você necessita das seguintes ferramentas:
+* Um editor de código (ex: **[Visual Studio Code](https://code.visualstudio.com/)**)
+* Um navegador web para testar as alterações.
+* (Opcional) A extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) para VS Code, que atualiza o site automaticamente ao salvar.
 
--<a href="https://godotengine.org/download">GODOT</a>
+## 📋 Licença
 
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
-```
-
-## 📋 Licença/License
-Utilize o link <https://chooser-beta.creativecommons.org/> para fazer uma licença CC BY 4.0.
+Este projeto é licenciado sob a Licença **Creative Commons CC BY 4.0**.
+Para ver uma cópia da licença, visite <https://chooser-beta.creativecommons.org/> ou veja o arquivo de licença no repositório.
 
 ## 🎓 Referências
 
-Aqui estão as referências usadas no projeto.
-
-1. <https://github.com/iuricode/readme-template>
-2. <https://github.com/gabrieldejesus/readme-model>
-3. <https://chooser-beta.creativecommons.org/>
-4. <https://freesound.org/>
-5. <https://www.toptal.com/developers/gitignore>
-6. Músicas por: <a href="https://freesound.org/people/DaveJf/sounds/616544/"> DaveJf </a> e <a href="https://freesound.org/people/DRFX/sounds/338986/"> DRFX </a> ambas com Licença CC 0.
+* **[Templates de README](https://github.com/iuricode/readme-template)**: Usado como base inicial para este documento.
+* **[Gerador de .gitignore](https://www.toptal.com/developers/gitignore)**: Ferramenta para criar o arquivo .gitignore.
+* **[Creative Commons](https://chooser-beta.creativecommons.org/)**: Ferramenta para escolha de licença.
