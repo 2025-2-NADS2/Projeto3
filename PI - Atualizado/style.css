@@ -880,3 +880,115 @@ body.modal-open {
     padding: 10px 20px;   
     text-align: right; 
 }
+/* --- Estilos para a Página de Ouvidoria --- */
+
+.ouvidoria-section .container {
+    max-width: 1200px; /* Um pouco mais largo para acomodar as colunas */
+}
+
+/* O novo container que divide a página em duas colunas */
+.ouvidoria-container {
+    display: flex;
+    flex-wrap: wrap; /* Faz as colunas ficarem uma em cima da outra em telas pequenas */
+    gap: 40px; /* Espaço entre as colunas */
+}
+
+/* Coluna da esquerda (Informações) */
+.ouvidoria-info {
+    flex: 1; /* Ocupa o espaço disponível */
+    min-width: 300px; /* Largura mínima antes de quebrar */
+}
+
+.ouvidoria-info h3 {
+    font-size: 1.5rem;
+    color: #333; /* Ajuste a cor se necessário */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.ouvidoria-info p, 
+.ouvidoria-info li {
+    line-height: 1.6;
+    color: #555; /* Ajuste a cor se necessário */
+}
+
+.ouvidoria-info ol,
+.ouvidoria-info ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.ouvidoria-info ol li {
+    margin-bottom: 8px;
+}
+
+/* Coluna da direita (Formulário) */
+.ouvidoria-form-wrapper {
+    flex: 1.2; /* Faz o formulário ser um pouco maior que a info */
+    min-width: 320px;
+    background: #f9f9f9; /* Um fundo leve para destacar o form */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Ajustes nos novos campos do formulário */
+
+/* Campo de Seleção (Tipo de Manifestação) */
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #fff;
+}
+
+/* Campo de Upload de Arquivo */
+.input-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: #fff;
+}
+
+/* Estilo da "dica" do campo de upload */
+.input-group small {
+    display: block;
+    font-size: 0.85rem;
+    color: #777;
+    margin: -5px 0 10px 0;
+}
+
+/* Checkbox de Anonimato */
+.input-group-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-group-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+.input-group-checkbox label {
+    font-weight: 600;
+    color: #444;
+}
+
+/* --- Fim dos Estilos de Ouvidoria --- */
+
+/* Para o layout de duas colunas funcionar bem em telas menores, 
+  você provavelmente já tem um @media query no seu style.css.
+  Se não tiver, este é um exemplo simples:
+*/
+@media (max-width: 768px) {
+    .ouvidoria-container {
+        flex-direction: column; /* Coloca as colunas uma sobre a outra */
+    }
+}
