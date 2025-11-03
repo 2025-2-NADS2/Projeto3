@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Histórico - Instituto Alma</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.style.css"> </head>
+<body>
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="doador-painel.html" class="logo"><strong>IA</strong> Portal do Doador</a>
+            </div>
+            
+            <nav class="admin-nav">
+                <a href="doador.painel.html">Meu Painel</a>
+                <a href="doador.historico.html" class="active">Meu Histórico de Doações</a>
+                <a href="#">Gerenciar Meus Dados</a>
+                <a href="doe.html">Fazer Nova Doação</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn btn-secondary btn-full">Sair</a>
+            </div>
+        </aside>
+
+        <button class="admin-mobile-toggle" id="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <main class="admin-content">
+            <header class="admin-header">
+                <h1>Meu Histórico de Doações</h1>
+                <p>Acompanhe e baixe os recibos de todas as suas contribuições.</p>
+            </header>
+
+            <section class="admin-management">
+                
+                <div class="management-section">
+                    <h2>Seu Impacto (Doações Mensais - Anual)</h2>
+                    <p>Veja aqui um gráfico do seu histórico de contribuições ao longo do ano.</p>
+                    <img src="https://placehold.co/1200x400/111F44/FFFFFF?text=Gráfico+de+Doações+Mensais" alt="Gráfico de doações mensais" style="width:100%; border-radius: 8px; margin-top: 20px;">
+                </div>
+
+                <div class="management-section">
+                    <h2>Todas as Minhas Doações</h2>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Recibo</th>
+                                <th>Valor</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#2025-10-A</td>
+                                <td>R$ 100,00</td>
+                                <td>01/10/2025</td>
+                                <td>Confirmado</td>
+                                <td><a href="#">Baixar PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>#2025-08-C</td>
+                                <td>R$ 50,00</td>
+                                <td>15/08/2025</td>
+                                <td>Confirmado</td>
+                                <td><a href="#">Baixar PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>#2025-05-B</td>
+                                <td>R$ 150,00</td>
+                                <td>05/05/2025</td>
+                                <td>Confirmado</td>
+                                <td><a href="#">Baixar PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>#2025-02-A</td>
+                                <td>R$ 50,00</td>
+                                <td>10/02/2025</td>
+                                <td>Confirmado</td>
+                                <td><a href="#">Baixar PDF</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin-script.js"></script> </body>
+</html>
