@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Transparência - Admin Alma</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.style.css"> </head>
+<body>
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin.dashboard.html" class="logo"><strong>IA</strong> Admin</a> </div>
+            
+            <nav class="admin-nav">
+                <a href="admin.dashboard.html">Dashboard</a> 
+                <a href="admin-atividades.html">Gerenciar Atividades</a>
+                <a href="admin-eventos.html">Gerenciar Eventos</a>
+                <a href="admin-transparencia.html" class="active">Gerenciar Transparência</a>
+                <a href="admin.historico.html">Acompanhar Doações</a>
+                <a href="admin-ouvidoria.html">Mensagens (Ouvidoria)</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn btn-secondary btn-full">Sair</a> </div>
+        </aside>
+
+        <button class="admin-mobile-toggle" id="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <main class="admin-content">
+            <header class="admin-header">
+                <h1>Gerenciar Transparência</h1>
+                <p>Faça o upload de novos relatórios (PDF) para a página de transparência. </p>
+            </header>
+
+            <section class="management-section">
+                <h2>Novo Documento (PDF)</h2>
+                <form class="admin-form">
+                    <div class="input-group">
+                        <label for="pdf-titulo">Título do Documento</label>
+                        <input type="text" id="pdf-titulo" placeholder="Ex: Relatório Financeiro - 2024">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="pdf-categoria">Categoria</label>
+                        <select id="pdf-categoria">
+                            <option value="financeiro">Relatório Financeiro</option>
+                            <option value="atividades">Relatório de Atividades</option>
+                            <option value="estatuto">Estatuto e Governança</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pdf-file">Arquivo (PDF)</label>
+                        <input type="file" id="pdf-file" accept=".pdf">
+                        <small>Apenas arquivos .pdf são permitidos.</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Salvar Documento</button>
+                </form>
+            </section>
+            
+            <section class="management-section">
+                <h2>Documentos Publicados</h2>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Categoria</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Demonstrativo Financeiro - 2024</td>
+                            <td>Relatório Financeiro</td>
+                            <td>
+                                <a href="#" class="btn btn-danger" style="padding: 5px 10px;">Excluir</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Demonstrativo Financeiro - 2023</td>
+                            <td>Relatório Financeiro</td>
+                            <td>
+                                <a href="#" class="btn btn-danger" style="padding: 5px 10px;">Excluir</a>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>Relatório Anual de Atividades - 2023</td>
+                            <td>Relatório de Atividades</td>
+                            <td>
+                                <a href="#" class="btn btn-danger" style="padding: 5px 10px;">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <style>
+        .btn-danger {
+            background-color: var(--state-error);
+            color: var(--text-white);
+            border-color: var(--state-error);
+        }
+        .btn-danger:hover {
+            background-color: #b02424;
+            border-color: #b02424;
+            color: var(--text-white);
+        }
+    </style>
+
+    <script src="admin-script.js"></script> </body>
+</html>

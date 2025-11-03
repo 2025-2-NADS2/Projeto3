@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Atividades - Admin Alma</title>
+    <title>Gerenciar Eventos - Admin Alma</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="admin.style.css"> </head>
@@ -17,8 +17,8 @@
             
             <nav class="admin-nav">
                 <a href="admin.dashboard.html" >Dashboard</a>
-                <a href="admin-atividades.html"  class="active" >Gerenciar Atividades</a>
-                <a href="admin-eventos.html">Gerenciar Eventos</a>
+                <a href="admin-atividades.html">Gerenciar Atividades</a>
+                <a href="admin-eventos.html" class="active">Gerenciar Eventos</a>
                 <a href="admin-transparencia.html">Gerenciar Transparência</a>
                 <a href="admin.historico.html">Acompanhar Doações</a>
                 <a href="admin-ouvidoria.html">Mensagens (Ouvidoria)</a>
@@ -36,64 +36,64 @@
 
         <main class="admin-content">
             <header class="admin-header">
-                <h1>Gerenciar Atividades</h1>
-                <p>Crie, edite ou exclua as postagens da página "Nossas Atividades". [cite: 291, 310]</p>
+                <h1>Gerenciar Eventos</h1>
+                <p>Crie, edite ou exclua os posts da página "Eventos". </p>
             </header>
 
             <section class="management-section">
-                <h2>Adicionar Nova Atividade</h2>
+                <h2>Adicionar Novo Evento</h2>
                 <form class="admin-form">
                     <div class="input-group">
-                        <label for="ativ-titulo">Título da Atividade</label>
-                        <input type="text" id="ativ-titulo" placeholder="Ex: Projeto Sopa Fraterna">
+                        <label for="evento-titulo">Título do Evento</label>
+                        <input type="text" id="evento-titulo" placeholder="Ex: Festa de Natal Comunitária">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="evento-data">Data do Evento</label>
+                        <input type="date" id="evento-data">
                     </div>
                     
                     <div class="input-group">
-                        <label for="ativ-imagem">Imagem de Capa (Upload)</label>
-                        <input type="file" id="ativ-imagem" accept="image/png, image/jpeg">
-                        <small>Envie uma imagem (JPG ou PNG) para a capa do card.</small>
+                        <label for="evento-imagem">Imagem de Capa (Upload)</label>
+                        <input type="file" id="evento-imagem" accept="image/png, image/jpeg">
                     </div>
 
                     <div class="input-group">
-                        <label for="ativ-desc-curta">Descrição Curta (para o card)</label>
-                        <input type="text" id="ativ-desc-curta" placeholder="Uma frase curta que aparece no card." maxlength="100">
+                        <label for="evento-desc-curta">Descrição Curta (para o card)</label>
+                        <input type="text" id="evento-desc-curta" placeholder="Uma frase curta que aparece no card." maxlength="100">
                     </div>
 
                     <div class="input-group">
-                        <label for="ativ-desc-longa">Descrição Completa (para o modal)</label>
-                        <textarea id="ativ-desc-longa" rows="6" placeholder="O texto completo que aparecerá no modal 'Ver detalhes'..."></textarea>
+                        <label for="evento-desc-longa">Descrição Completa (para o modal)</label>
+                        <textarea id="evento-desc-longa" rows="6" placeholder="O texto completo que aparecerá no modal 'Ver detalhes'..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Salvar Atividade</button>
+                    <button type="submit" class="btn btn-primary">Salvar Evento</button>
                 </form>
             </section>
             
             <section class="management-section">
-                <h2>Atividades Publicadas</h2>
-                
+                <h2>Eventos Publicados</h2>
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th>Imagem</th>
+                            <th>Data</th>
                             <th>Título</th>
-                            <th>Descrição Curta</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><img src="images/Capa.Instituto.Criança.JPG" alt="Crianças" style="width: 100px; border-radius: 4px;"></td>
-                            <td>Projeto Dia das Crianças</td>
-                            <td>Celebração especial com distribuição de brinquedos...</td>
+                            <td>15/12/2024</td>
+                            <td>Festa de Natal Comunitária</td>
                             <td>
                                 <a href="#" class="btn btn-secondary" style="padding: 5px 10px;">Editar</a>
                                 <a href="#" class="btn btn-danger" style="padding: 5px 10px; margin-left: 5px;">Excluir</a>
                             </td>
                         </tr>
                         <tr>
-                            <td><img src="images/IMG_1284.JPG" alt="Natal" style="width: 100px; border-radius: 4px;"></td>
-                            <td>Projeto Natal</td>
-                            <td>Campanha com distribuição de presentes e ceia...</td>
+                            <td>25/01/2025</td>
+                            <td>Oficina de Artes para Crianças</td>
                             <td>
                                 <a href="#" class="btn btn-secondary" style="padding: 5px 10px;">Editar</a>
                                 <a href="#" class="btn btn-danger" style="padding: 5px 10px; margin-left: 5px;">Excluir</a>
