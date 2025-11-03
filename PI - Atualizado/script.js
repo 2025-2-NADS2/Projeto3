@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         if (track && slides.length > 0 && nextButton && prevButton && dotsNav) {
             const dots = Array.from(dotsNav.children);
+            // Corrigido para slides[0] apenas se slides.length > 0
             const slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
             
             const setSlidePosition = (slide, index) => { slide.style.left = slideWidth * index + 'px'; };
@@ -28,11 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 const currentDot = dots[currentIndex];
                 const targetDot = dots[targetIndex];
 
-                track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+                // Verifica se os elementos existem antes de acessar style ou classList
+                if(targetSlide) {
+                    track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+                    targetSlide.classList.add('current-slide');
+                }
                 if(currentSlide) currentSlide.classList.remove('current-slide');
-                if(targetSlide) targetSlide.classList.add('current-slide');
-                if(currentDot) currentDot.classList.remove('current-slide');
                 if(targetDot) targetDot.classList.add('current-slide');
+                if(currentDot) currentDot.classList.remove('current-slide');
+                
                 currentIndex = targetIndex;
             };
 
@@ -74,62 +79,93 @@ document.addEventListener('DOMContentLoaded', function () {
     const eventsSlider = document.querySelector('.events-slider-section');
     if (eventsSlider) {
         const track = eventsSlider.querySelector('.events-slider-track');
-        const slides = Array.from(track.children);
-        const nextButton = eventsSlider.querySelector('.next-event');
-        const prevButton = eventsSlider.querySelector('.prev-event');
         const container = eventsSlider.querySelector('.events-slider-container');
+        
+        // Verificação mais robusta
+        if (track && container) {
+            const slides = Array.from(track.children);
+            const nextButton = eventsSlider.querySelector('.next-event');
+            const prevButton = eventsSlider.querySelector('.prev-event');
 
-        if (track && slides.length > 0 && nextButton && prevButton && container) {
-            let currentIndex = 0;
+            if (slides.length > 0 && nextButton && prevButton) {
+                let currentIndex = 0;
 
-            const updateButtons = () => {
-                prevButton.disabled = currentIndex === 0;
-                const trackWidth = track.scrollWidth;
-                const containerWidth = container.clientWidth;
-                const maxScroll = trackWidth - containerWidth;
-                const currentScroll = slides[currentIndex] ? slides[currentIndex].offsetLeft : 0;
-                nextButton.disabled = currentScroll >= maxScroll - 1;
-            };
-            
-            const moveToSlide = (index) => {
-                if (index < 0 || index >= slides.length) return;
-                const targetSlide = slides[index];
-                if (!targetSlide) return;
-                track.style.transform = `translateX(-${targetSlide.offsetLeft}px)`;
-                currentIndex = index;
-                updateButtons();
-            };
+                const updateButtons = () => {
+                    prevButton.disabled = currentIndex === 0;
+                    
+                    // Cálculo de visibilidade do último slide
+                    const trackWidth = track.scrollWidth;
+                    const containerWidth = container.clientWidth;
+                    const maxScroll = trackWidth - containerWidth;
+                    
+                    // Encontra o offset do último slide
+                    const lastSlide = slides[slides.length - 1];
+                    const lastSlideOffset = lastSlide.offsetLeft + lastSlide.clientWidth;
+                    
+                    // Desabilita "next" se o fim do último slide já estiver visível
+                    // ou se o scroll máximo for atingido
+                    nextButton.disabled = (lastSlideOffset <= containerWidth + track.scrollLeft) || (track.scrollLeft >= maxScroll - 1);
+                };
 
-            nextButton.addEventListener('click', () => {
-                let nextIndex = currentIndex;
-                let currentOffset = slides[currentIndex].offsetLeft;
-                for (let i = currentIndex + 1; i < slides.length; i++) {
-                    if (slides[i].offsetLeft > currentOffset) {
-                        nextIndex = i;
-                        break;
-                    }
-                }
-                moveToSlide(nextIndex);
-            });
-
-            prevButton.addEventListener('click', () => {
-                let prevIndex = currentIndex;
-                let currentOffset = slides[currentIndex].offsetLeft;
-                for (let i = currentIndex - 1; i >= 0; i--) {
-                    if (slides[i].offsetLeft < currentOffset) {
-                        prevIndex = i;
-                        while(prevIndex > 0 && slides[prevIndex].offsetLeft + container.clientWidth > currentOffset){
-                            prevIndex--;
+                const moveToSlide = (index) => {
+                    if (index < 0 || index >= slides.length) return;
+                    
+                    // Encontra o slide alvo
+                    const targetSlide = slides[index];
+                    if (!targetSlide) return;
+                    
+                    // Calcula a posição de scroll
+                    let newScrollLeft = targetSlide.offsetLeft;
+                    
+                    // Garante que não ultrapasse o limite máximo
+                    const trackWidth = track.scrollWidth;
+                    const containerWidth = container.clientWidth;
+                    const maxScroll = trackWidth - containerWidth;
+                    
+                    if (newScrollLeft > maxScroll) {
+                        newScrollLeft = maxScroll;
+                        // Ajusta o currentIndex para o último slide visível
+                        for(let i = slides.length - 1; i >= 0; i--) {
+                            if(slides[i].offsetLeft <= maxScroll) {
+                                currentIndex = i;
+                                break;
+                            }
                         }
-                        break;
+                    } else {
+                         currentIndex = index;
                     }
-                }
-                moveToSlide(prevIndex);
-            });
 
-            updateButtons();
+                    track.style.transform = `translateX(-${newScrollLeft}px)`;
+                    updateButtons();
+                };
+
+                nextButton.addEventListener('click', () => {
+                    let nextIndex = currentIndex + 1;
+                    // Encontra o próximo slide que está (pelo menos parcialmente) fora da vista
+                    while(nextIndex < slides.length - 1 && slides[nextIndex].offsetLeft < (container.clientWidth + (slides[currentIndex].offsetLeft || 0))) {
+                        if(slides[nextIndex].offsetLeft + slides[nextIndex].clientWidth > container.clientWidth + (slides[currentIndex].offsetLeft || 0)) {
+                            break;
+                        }
+                        nextIndex++;
+                    }
+                    moveToSlide(nextIndex);
+                });
+
+                prevButton.addEventListener('click', () => {
+                    let prevIndex = currentIndex - 1;
+                    // Encontra o slide anterior que se tornará o primeiro
+                    while(prevIndex > 0 && slides[prevIndex].offsetLeft + container.clientWidth > (slides[currentIndex].offsetLeft || 0)) {
+                        prevIndex--;
+                    }
+                    moveToSlide(prevIndex);
+                });
+
+                updateButtons();
+                window.addEventListener('resize', updateButtons); // Atualiza botões no resize
+            }
         }
     }
+
 
     // --- LÓGICA PARA A PÁGINA DE DOAÇÃO ---
     const donationPage = document.querySelector('.donation-page-section');
@@ -140,24 +176,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (amountOptions.length > 0 && customAmountInput && confirmButton) {
             const updateButtonText = (amount) => {
-                confirmButton.textContent = `Confirmar Doação de R$ ${amount}`;
+                // Formata o valor para ter certeza
+                let formattedAmount = parseFloat(amount.replace(',', '.')).toFixed(2);
+                if (isNaN(formattedAmount) || formattedAmount <= 0) {
+                    confirmButton.textContent = 'Confirmar Doação';
+                } else {
+                    confirmButton.textContent = `Confirmar Doação de R$ ${formattedAmount.replace('.', ',')}`;
+                }
             };
 
             amountOptions.forEach(button => {
                 button.addEventListener('click', () => {
                     amountOptions.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    customAmountInput.value = '';
+                    customAmountInput.value = ''; // Limpa o campo customizado
                     const amount = button.textContent.replace('R$ ', '');
                     updateButtonText(amount);
                 });
             });
 
             customAmountInput.addEventListener('input', () => {
-                amountOptions.forEach(btn => btn.classList.remove('active'));
+                amountOptions.forEach(btn => btn.classList.remove('active')); // Desmarca botões
                 const amount = customAmountInput.value || '0';
                 updateButtonText(amount);
             });
+
+            // Inicia o texto do botão com o valor padrão
+            const initialActive = donationPage.querySelector('.amount-option.active');
+            if (initialActive) {
+                updateButtonText(initialActive.textContent.replace('R$ ', ''));
+            }
         }
     }
     
@@ -165,24 +213,30 @@ document.addEventListener('DOMContentLoaded', function () {
     const tabsContainer = document.querySelector('.login-tabs');
     if (tabsContainer) {
         const tabButtons = tabsContainer.querySelectorAll('.tab-btn');
-        const formDoador = document.getElementById('form-doador');
-        const formAdmin = document.getElementById('form-admin');
+        const loginForms = document.querySelectorAll('.login-form');
 
-        if(tabButtons.length > 0 && formDoador && formAdmin) {
+        if(tabButtons.length > 0 && loginForms.length > 0) {
+            
             tabButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
+                    
+                    // Pega o alvo do botão (ex: 'doador' ou 'admin')
+                    const formName = button.dataset.form; // 'doador'
+                    const targetForm = document.getElementById('form-' + formName); // '#form-doador'
 
-                    if (button.dataset.form === 'doador') {
-                        formDoador.classList.add('active');
-                        formAdmin.classList.remove('active');
-                    } else {
-                        formDoador.classList.remove('active');
-                        formAdmin.classList.add('active');
+                    // 1. Remove 'active' de todos os botões e forms
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    loginForms.forEach(form => form.classList.remove('active'));
+
+                    // 2. Adiciona 'active' apenas no botão clicado
+                    button.classList.add('active');
+                    
+                    // 3. Adiciona 'active' apenas no formulário alvo
+                    if (targetForm) {
+                        targetForm.classList.add('active');
                     }
                 });
             });
         }
     }
-});
+}); // FIM DO DOMCONTENTLOADED

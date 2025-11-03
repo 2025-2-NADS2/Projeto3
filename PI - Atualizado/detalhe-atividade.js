@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const description = link.dataset.desc;
 
         // 2. Alimenta o modal com os dados do card clicado
-        modalTitle.textContent = title;
-        modalImage.src = imgSrc;
-        modalImage.alt = title; 
-        modalDescription.textContent = description;
+        if (title) modalTitle.textContent = title;
+        if (imgSrc) modalImage.src = imgSrc;
+        if (title) modalImage.alt = title; 
+        if (description) modalDescription.textContent = description;
 
         // 3. Mostra o modal e trava o scroll da página
         modalOverlay.classList.add('show');
@@ -48,18 +48,22 @@ document.addEventListener("DOMContentLoaded", function() {
         link.addEventListener('click', openModal);
     });
 
-    closeModalBtn.addEventListener('click', closeModal);
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
 
     modalOverlay.addEventListener('click', function(event) {
+        // Fecha o modal se o clique for no fundo (overlay)
         if (event.target === modalOverlay) {
             closeModal();
         }
     });
 
     document.addEventListener('keydown', function(event) {
+        // Fecha o modal ao pressionar a tecla 'Escape'
         if (event.key === 'Escape' && modalOverlay.classList.contains('show')) {
             closeModal();
         }
     });
 
-});
+}); // FIM DO DOMCONTENTLOADED
