@@ -43,10 +43,71 @@
             <section class="admin-management">
                 
                 <div class="management-section">
-                    <h2>Seu Impacto (Doações Mensais - Anual)</h2>
-                    <p>Veja aqui um gráfico do seu histórico de contribuições ao longo do ano.</p>
-                    <img src="https://placehold.co/1200x400/111F44/FFFFFF?text=Gráfico+de+Doações+Mensais" alt="Gráfico de doações mensais" style="width:100%; border-radius: 8px; margin-top: 20px;">
-                </div>
+    <h2>Seu Impacto (Doações Mensais - Anual)</h2>
+    <p>Veja aqui um gráfico do seu histórico de contribuições ao longo do ano.</p>
+    
+    
+    <!-- {dadosDoGrafico.map(mes => (
+    <div 
+        className="chart-bar" 
+        style={{ height: mes.alturaPercentual }} 
+        key={mes.mes}
+    >
+        <span className="bar-value">R$ {mes.valor.toFixed(2)}</span>
+        <div className="bar-label">{mes.mes}</div>
+    </div> // JSON -> REACT QUANDO EU FOR FAZER 
+))} -->
+    <div class="chart-container">
+        <div class="chart-bar" style="height: 0%;">
+            <span class="bar-value">R$ 0,00</span>
+            <div class="bar-label">Jan</div>
+        </div>
+        <div class="chart-bar" style="height: 40%;">
+            <span class="bar-value">R$ 50,00</span>
+            <div class="bar-label">Fev</div>
+        </div>
+        <div class="chart-bar" style="height: 0%;">
+            <span class="bar-value">R$ 0,00</span>
+            <div class="bar-label">Mar</div>
+        </div>
+        <div class="chart-bar" style="height: 0%;">
+            <span class="bar-value">R$ 0,00</span>
+            <div class="bar-label">Abr</div>
+        </div>
+        <div class="chart-bar" style="height: 100%;">
+            <span class="bar-value">R$ 150,00</span>
+            <div class="bar-label">Mai</div>
+        </div>
+        <div class="chart-bar" style="height: 0%;">
+            <span class="bar-value">R$ 0,00</span>
+            <div class="bar-label">Jun</div>
+        </div>
+        <div class="chart-bar" style="height: 0%;">
+            <span class="bar-value">R$ 0,00</span>
+            <div class="bar-label">Jul</div>
+        </div>
+        <div class="chart-bar" style="height: 40%;">
+            <span class="bar-value">R$ 50,00</span>
+            <div class="bar-label">Ago</div>
+        </div>
+        <div class="chart-bar" style="height: 0%;">
+            <span class="bar-value">R$ 0,00</span>
+            <div class="bar-label">Set</div>
+        </div>
+        <div class="chart-bar" style="height: 80%;">
+            <span class="bar-value">R$ 100,00</span>
+            <div class="bar-label">Out</div>
+        </div>
+        <div class="chart-bar" style="height: 0%;">
+            <span class="bar-value">R$ 0,00</span>
+            <div class="bar-label">Nov</div>
+        </div>
+        <div class="chart-bar" style="height: 0%;">
+            <span class="bar-value">R$ 0,00</span>
+            <div class="bar-label">Dez</div>
+        </div>
+    </div>
+</div>
 
                 <div class="management-section">
                     <h2>Todas as Minhas Doações</h2>

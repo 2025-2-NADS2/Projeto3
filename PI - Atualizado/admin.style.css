@@ -224,6 +224,129 @@ body {
     margin: 4px 0;
 }
 
+/* =============================================
+   6. MELHORIAS VISUAIS (Ícones e Gráficos)
+   ============================================= */
+
+/* Alinha o card para ter o ícone ao lado do texto */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stat-card-icon {
+    font-size: 3rem; /* 48px */
+    padding: 15px;
+    border-radius: 50%;
+    background-color: #f0f2f5; /* Fundo cinza claro */
+    line-height: 1;
+}
+
+.stat-card-info p {
+    font-size: 1.8rem; /* Um pouco menor para caber */
+}
+
+/* ... (O seu código .stat-card e .stat-card-icon fica aqui em cima) ... */
+
+
+/* Gráfico de Barras CSS */
+.chart-container {
+    display: flex;
+    align-items: flex-end; /* Alinha as barras na base */
+    gap: 15px;
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    margin-top: 20px; /* Adiciona espaço acima do gráfico */
+}
+
+.chart-bar {
+    flex: 1; /* Faz todas as barras terem a mesma largura */
+    background-color: var(--primary-color);
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    
+    /* Tooltip simples */
+    transition: background-color 0.3s ease;
+    animation: rise 1s ease-out;
+}
+
+.chart-bar:hover {
+    background-color: var(--secondary-color); /* Laranja ao passar o mouse */
+}
+
+.bar-label {
+    position: absolute;
+    bottom: -25px; /* Abaixo da barra */
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+/* Animação para as barras "subirem" */
+@keyframes rise {
+  from {
+    height: 0;
+  }
+  to {
+    /* A altura final é definida pelo 'style' inline no HTML */
+  }
+}
+
+/* --- ESTA É A PARTE IMPORTANTE (O "TOOLTIP") --- */
+.bar-value {
+    position: absolute;
+    top: -30px; /* Posição acima da barra */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--text-dark); /* Fundo escuro */
+    color: var(--text-white);
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    
+    /* >> A CORREÇÃO ESTÁ AQUI << */
+    opacity: 0; /* Escondido por padrão */
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    white-space: nowrap; /* Impede que "R$ 1.600,00" quebre a linha */
+}
+
+/* Mostra o valor (tooltip) quando o mouse passa por cima da barra */
+.chart-bar:hover .bar-value {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* (Opcional) Adiciona uma setinha no tooltip */
+.bar-value::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Na base do tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--text-dark) transparent transparent transparent;
+}
+
+/* Animação para as barras "subirem" */
+@keyframes rise {
+  from {
+    height: 0;
+  }
+  to {
+    /* A altura final é definida pelo 'style' inline no HTML */
+  }
+}
+
 @media (max-width: 900px) {
     .admin-sidebar {
         /* Esconde o sidebar fora da tela */
