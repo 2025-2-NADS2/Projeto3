@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Instituto Alma</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="login-style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="login-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<header class="main-header">
+<body> <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo"><strong>IA</strong> Instituto Alma</a>
             <nav class="main-nav">
@@ -27,9 +28,8 @@
             </div>
         </div>
     </header>
-<body>
-    <div class="login-container">
-        <div class="form-column">
+
+    <main class="login-container"> <div class="form-column">
             <div class="form-wrapper">
                 <a href="index.html" class="logo"><strong>IA</strong> Instituto Alma</a>
                 <div class="login-tabs">
@@ -37,7 +37,7 @@
                     <button class="tab-btn" data-form="admin">Sou Administrador</button>
                 </div>
 
-                <form id="form-doador" class="login-form active">
+                <form id="form-doador" class="login-form active" action="doador.painel.html" method="get">
                     <h2>Acesse seu portal</h2>
                     <p>Acompanhe o impacto da sua doação.</p>
                     <div class="input-group">
@@ -53,7 +53,7 @@
                     <p class="signup-link">Não tem uma conta? <a href="cadastro.html">Cadastre-se agora</a></p>
                 </form>
 
-                <form id="form-admin" class="login-form">
+                <form id="form-admin" class="login-form" action="admin.dashboard.html" method="get">
                     <h2>Painel Administrativo</h2>
                     <p>Acesso exclusivo para a equipe do instituto.</p>
                     <div class="input-group">
@@ -74,8 +74,6 @@
                 <p>Sua participação é a peça que faltava para transformar ainda mais vidas.</p>
             </div>
         </div>
-    </div>
-
-    <script src="script.js"></script>
+    </main> <script src="script.js"></script>
  </body>
 </html>
