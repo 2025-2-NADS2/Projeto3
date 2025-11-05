@@ -1,4 +1,4 @@
-// Espera o documento carregar para rodar o script
+/// Espera o documento carregar para rodar o script
 document.addEventListener("DOMContentLoaded", function() {
 
     // 1. Seleciona todos os elementos necessários
