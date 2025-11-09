@@ -249,24 +249,32 @@ section {
     filter: brightness(0.6); /* Escurece a imagem para o texto aparecer */
 }
 
-/* Botões do Carrossel */
+/* Botões do Carrossel (HERO) - ESTILO CORRIGIDO */
 .carousel-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.3);
-    border: none;
-    color: white;
-    font-size: 2rem;
-    width: 50px;
-    height: 50px;
+    background: transparent;
+    border: 2px solid var(--text-white); /* Borda branca para o hero */
+    color: var(--text-white); /* Seta branca */
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+    font-size: 1.5rem;
     cursor: pointer;
+    transition: all 0.3s ease;
     z-index: 10;
+
+    /* Ajuste para o fundo não ficar escuro */
+    background-color: rgba(0, 0, 0, 0.2); 
 }
 .carousel-button.prev { left: 20px; }
 .carousel-button.next { right: 20px; }
-.carousel-button:hover { background: rgba(0, 0, 0, 0.5); }
+
+.carousel-button:hover {
+    background-color: var(--text-white);
+    color: var(--primary-color); /* Seta azul no hover */
+}
 
 /* Navegação (Dots) */
 .carousel-nav {
@@ -992,4 +1000,48 @@ body.modal-open {
         flex-direction: column; /* Coloca as colunas uma sobre a outra */
     }
 }
- 
+ /* Correção para o card de atividade em React */
+.event-card-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+.event-grid-card:hover .event-card-button {
+  color: var(--text-light); /* Mantém a cor do texto do card */
+}
+
+.event-grid-card:hover .event-card-button .card-link {
+  text-decoration: underline; /* Recria o hover do link */
+}
+/* =============================================
+   17. CORREÇÕES DE ESPECIFICIDADE (React)
+   ============================================= */
+
+/* FIX: Forçar o estilo dos inputs da Ouvidoria,
+   que estão sendo sobrescritos por admin/login.css */
+.ouvidoria-form .input-group input[type="text"],
+.ouvidoria-form .input-group input[type="email"],
+.ouvidoria-form .input-group textarea {
+    background-color: var(--background-white);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 8px; /* Garante a borda certa */
+}
+
+/* FIX: Estilizar o checkbox nativo */
+.ouvidoria-form .input-group-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    /* Usa a cor primária do Guia de Estilo */
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}

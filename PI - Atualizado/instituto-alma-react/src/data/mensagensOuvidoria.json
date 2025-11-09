@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "data": "02/11/2025",
+    "tipo": "Sugestão",
+    "de": "carlos.oliveira@email.com",
+    "status": "Novo"
+  },
+  {
+    "id": 2,
+    "data": "01/11/2025",
+    "tipo": "Reclamação",
+    "de": "Anônimo",
+    "status": "Novo"
+  },
+  {
+    "id": 3,
+    "data": "30/10/2025",
+    "tipo": "Elogio",
+    "de": "maria.souza@email.com",
+    "status": "Lido"
+  }
+]
