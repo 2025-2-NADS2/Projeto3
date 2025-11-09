@@ -1,9 +1,9 @@
 // src/App.jsx
 
-// 1. Importamos as ferramentas do React Router
+//Ferramentas do React Router
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-// 2. Importamos nossos 3 Layouts
+//Layouts
 import PublicLayout from './layouts/PublicLayout';
 import AdminLayout from './layouts/AdminLayout';
 import AuthLayout from './layouts/AuthLayout';
