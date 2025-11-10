@@ -11,21 +11,35 @@ export default function AdminAtividadesPage() {
   const [descLonga, setDescLonga] = useState('');
   
   // === ESTADO PARA A TABELA ===
-  const [atividadesList, setAtividadesList] = useState([]);
+  // CORREÇÃO 1: Garantir que é um array vazio
+  const [atividadesList, setAtividadesList] = useState([]); 
   const [loading, setLoading] = useState(true);
 
-  // === NOVO ESTADO: MODO DE EDIÇÃO ===
+  // === ESTADO: MODO DE EDIÇÃO ===
   const [editingId, setEditingId] = useState(null);
 
-  // === FUNÇÃO PARA BUSCAR DADOS (GET) ===
+  // === FUNÇÃO PARA BUSCAR DADOS (GET) - CORRIGIDA ===
   const fetchAtividades = async () => {
     try {
       setLoading(true);
       const response = await fetch('http://localhost:3001/api/atividades');
+      
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+      
       const data = await response.json();
-      setAtividadesList(data);
+      
+      if (Array.isArray(data)) {
+        setAtividadesList(data);
+      } else {
+        console.error("Erro: A API de Atividades não retornou um array.", data);
+        setAtividadesList([]); // Garante que seja um array
+      }
+
     } catch (error) {
       console.error('Erro ao buscar atividades:', error);
+      setAtividadesList([]); // Garante array vazio em caso de falha total
     } finally {
       setLoading(false);
     }
@@ -42,25 +56,15 @@ export default function AdminAtividadesPage() {
     setImgUrl('');
     setDescCurta('');
     setDescLonga('');
-    setEditingId(null); // Sai do modo de edição
+    setEditingId(null);
   };
 
   // === FUNÇÃO DE ENVIO DO FORMULÁRIO (POST ou PUT) ===
   const handleSubmit = async (e) => {
     e.preventDefault(); 
-    
-    const atividadeData = {
-      titulo: titulo,
-      img_url: imgUrl,
-      desc_curta: descCurta,
-      desc_longa: descLonga
-    };
-
-    // Decide se é CREATE (POST) ou UPDATE (PUT)
+    const atividadeData = { titulo, img_url: imgUrl, desc_curta: descCurta, desc_longa: descLonga };
     const isEditing = editingId !== null;
-    const url = isEditing 
-      ? `http://localhost:3001/api/atividades/${editingId}`
-      : 'http://localhost:3001/api/atividades';
+    const url = isEditing ? `http://localhost:3001/api/atividades/${editingId}` : 'http://localhost:3001/api/atividades';
     const method = isEditing ? 'PUT' : 'POST';
 
     try {
@@ -69,61 +73,38 @@ export default function AdminAtividadesPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(atividadeData),
       });
-
-      if (!response.ok) {
-        throw new Error(`Erro ao ${isEditing ? 'atualizar' : 'salvar'} a atividade`);
-      }
-      
+      if (!response.ok) throw new Error(`Erro ao ${isEditing ? 'atualizar' : 'salvar'} a atividade`);
       const savedOrUpdatedAtividade = await response.json();
-
       if (isEditing) {
-        // Modo Edição: Atualiza o item na lista
-        setAtividadesList(atividadesList.map(item => 
-          item.id_atividade === editingId ? savedOrUpdatedAtividade : item
-        ));
+        setAtividadesList(atividadesList.map(item => item.id_atividade === editingId ? savedOrUpdatedAtividade : item));
         alert('Atividade atualizada com sucesso!');
       } else {
-        // Modo Criação: Adiciona o novo item no topo
         setAtividadesList([savedOrUpdatedAtividade, ...atividadesList]);
         alert('Nova atividade salva com sucesso!');
       }
-      
-      resetForm(); // Limpa o formulário
-
+      resetForm();
     } catch (error) {
       console.error('Falha ao enviar atividade:', error);
       alert(`Erro ao salvar: ${error.message}`);
     }
   };
 
-  // === NOVA FUNÇÃO: CARREGAR PARA EDITAR ===
+  // === FUNÇÃO: CARREGAR PARA EDITAR ===
   const handleEditClick = (atividade) => {
-    // 1. Define o ID de edição
     setEditingId(atividade.id_atividade);
-    
-    // 2. Preenche o formulário com os dados da atividade
     setTitulo(atividade.titulo);
     setImgUrl(atividade.img_url || '');
     setDescCurta(atividade.desc_curta);
     setDescLonga(atividade.desc_longa || '');
-
-    // 3. Rola a tela para o topo
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // === FUNÇÃO (DELETE) ===
   const handleDelete = async (idParaExcluir) => {
-    if (editingId === idParaExcluir) {
-      resetForm();
-    }
-
+    if (editingId === idParaExcluir) resetForm();
     try {
-      const response = await fetch(`http://localhost:3001/api/atividades/${idParaExcluir}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        throw new Error('Falha ao excluir a atividade.');
-      }
+      const response = await fetch(`http://localhost:3001/api/atividades/${idParaExcluir}`, { method: 'DELETE' });
+      if (!response.ok) throw new Error('Falha ao excluir a atividade.');
       setAtividadesList(atividadesList.filter(a => a.id_atividade !== idParaExcluir));
       alert('Atividade excluída com sucesso!');
     } catch (error) {
@@ -131,22 +112,18 @@ export default function AdminAtividadesPage() {
     }
   };
 
-
   return (
     <main className="admin-content">
       <header className="admin-header">
         <h1>Gerenciar Atividades</h1>
         <p>Crie, edite ou exclua as postagens da página "Nossas Atividades".</p>
       </header>
-
-      {/* Seção 1: Formulário (agora dinâmico) */}
+      
+      {/* Seção 1: Formulário (dinâmico) */}
       <section className="management-section">
-        
-        {/* O Título muda */}
         <h2>{editingId ? 'Editar Atividade' : 'Adicionar Nova Atividade'}</h2>
-        
         <form className="admin-form" onSubmit={handleSubmit}>
-          
+          {/* Input Título */}
           <div className="input-group">
             <label htmlFor="ativ-titulo">Título da Atividade</label>
             <input 
@@ -156,7 +133,7 @@ export default function AdminAtividadesPage() {
               required 
             />
           </div>
-          
+          {/* Input Imagem URL */}
           <div className="input-group">
             <label htmlFor="ativ-imagem">URL da Imagem de Capa</label>
             <input 
@@ -166,7 +143,7 @@ export default function AdminAtividadesPage() {
             />
             <small>Use uma URL (ex: /images/foto.jpg) da sua pasta /public.</small>
           </div>
-
+          {/* Input Descrição Curta */}
           <div className="input-group">
             <label htmlFor="ativ-desc-curta">Descrição Curta (para o card)</label>
             <input 
@@ -176,7 +153,7 @@ export default function AdminAtividadesPage() {
               required
             />
           </div>
-
+          {/* Input Descrição Longa */}
           <div className="input-group">
             <label htmlFor="ativ-desc-longa">Descrição Completa (para o modal)</label>
             <textarea 
@@ -185,13 +162,10 @@ export default function AdminAtividadesPage() {
               onChange={(e) => setDescLonga(e.target.value)}
             ></textarea>
           </div>
-
-          {/* Os botões mudam */}
+          {/* Botões */}
           <button type="submit" className="btn btn-primary">
             {editingId ? 'Atualizar Atividade' : 'Salvar Atividade'}
           </button>
-          
-          {/* Botão de Cancelar (só aparece se estiver editando) */}
           {editingId && (
             <button 
               type="button" 
@@ -205,57 +179,67 @@ export default function AdminAtividadesPage() {
         </form>
       </section>
       
-      {/* Seção 2: Tabela (agora com 'onClick' no botão editar) */}
+      {/* Seção 2: Tabela (com 'onClick' no botão editar) */}
       <section className="management-section">
         <h2>Atividades Publicadas</h2>
         
         {loading && <p>Carregando tabela de atividades...</p>}
 
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>Imagem</th>
-              <th>Título</th>
-              <th>Descrição Curta</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {atividadesList.map((atividade) => (
-              <tr key={atividade.id_atividade}>
-                <td>
-                  <img 
-                    src={atividade.img_url || '/images/teste.jpg'}
-                    alt={atividade.titulo} 
-                    style={{ width: '100px', height: '60px', objectFit: 'cover', borderRadius: '4px' }} 
-                  />
-                </td>
-                <td>{atividade.titulo}</td>
-                <td>{atividade.desc_curta}</td>
-                <td>
-                  {/* Botão Editar agora chama handleEditClick */}
-                  <button 
-                    className="btn btn-secondary" 
-                    style={{ padding: '5px 10px' }}
-                    onClick={() => handleEditClick(atividade)}
-                  >
-                    Editar
-                  </button>
-                  <button 
-                    className="btn btn-danger" 
-                    style={{ padding: '5px 10px', marginLeft: '5px' }}
-                    onClick={() => handleDelete(atividade.id_atividade)}
-                  >
-                    Excluir
-                  </button>
-                </td>
+        {/* CORREÇÃO 2: Adicionar a verificação de segurança aqui */}
+        {!loading && Array.isArray(atividadesList) && (
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Imagem</th>
+                <th>Título</th>
+                <th>Descrição Curta</th>
+                <th>Ações</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {/* Só mapeia se a lista estiver preenchida */}
+              {atividadesList.length > 0 ? (
+                atividadesList.map((atividade) => (
+                  <tr key={atividade.id_atividade}>
+                    <td>
+                      <img 
+                        src={atividade.img_url || '/images/teste.jpg'}
+                        alt={atividade.titulo} 
+                        style={{ width: '100px', height: '60px', objectFit: 'cover', borderRadius: '4px' }} 
+                      />
+                    </td>
+                    <td>{atividade.titulo}</td>
+                    <td>{atividade.desc_curta}</td>
+                    <td>
+                      <button 
+                        className="btn btn-secondary" 
+                        style={{ padding: '5px 10px' }}
+                        onClick={() => handleEditClick(atividade)}
+                      >
+                        Editar
+                      </button>
+                      <button 
+                        className="btn btn-danger" 
+                        style={{ padding: '5px 10px', marginLeft: '5px' }}
+                        onClick={() => handleDelete(atividade.id_atividade)}
+                      >
+                        Excluir
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                // Mensagem amigável se a tabela estiver vazia
+                <tr>
+                  <td colSpan="4" style={{ textAlign: 'center' }}>Nenhuma atividade cadastrada ainda.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        )}
+        
+
       </section>
     </main>
   );
 }
-
-//Feito pelo Gustavo Moura -> Terminar as APIS 

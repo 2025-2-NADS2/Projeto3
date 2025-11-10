@@ -12,10 +12,11 @@ export default function AdminEventosPage() {
   const [descLonga, setDescLonga] = useState('');
   
   // === ESTADO PARA A TABELA ===
-  const [eventosList, setEventosList] = useState([]);
+  // AQUI ESTÁ A CORREÇÃO: Inicializamos com um array vazio []
+  const [eventosList, setEventosList] = useState([]); 
   const [loading, setLoading] = useState(true);
 
-  // === NOVO ESTADO: MODO DE EDIÇÃO ===
+  // === ESTADO: MODO DE EDIÇÃO ===
   const [editingId, setEditingId] = useState(null);
 
   // === FUNÇÃO PARA BUSCAR DADOS (GET) ===
@@ -23,10 +24,25 @@ export default function AdminEventosPage() {
     try {
       setLoading(true);
       const response = await fetch('http://localhost:3001/api/eventos');
+      
+      // Verificação de erro da API
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+      
       const data = await response.json();
-      setEventosList(data);
+      
+      // Verificação se a data é um array (segurança)
+      if (Array.isArray(data)) {
+        setEventosList(data);
+      } else {
+        console.error("Erro: A API não retornou um array.", data);
+        setEventosList([]); // Garante que seja um array
+      }
+
     } catch (error) {
       console.error('Erro ao buscar eventos:', error);
+      setEventosList([]); // Em caso de falha total, define como array vazio
     } finally {
       setLoading(false);
     }
@@ -44,7 +60,7 @@ export default function AdminEventosPage() {
     setImgUrl('');
     setDescCurta('');
     setDescLonga('');
-    setEditingId(null); // Sai do modo de edição
+    setEditingId(null); 
   };
 
   // === FUNÇÃO DE ENVIO DO FORMULÁRIO (POST ou PUT) ===
@@ -79,18 +95,16 @@ export default function AdminEventosPage() {
       const savedOrUpdatedEvento = await response.json();
 
       if (isEditing) {
-        // Modo Edição: Atualiza o item na lista
         setEventosList(eventosList.map(item => 
           item.id_evento === editingId ? savedOrUpdatedEvento : item
         ));
         alert('Evento atualizado com sucesso!');
       } else {
-        // Modo Criação: Adiciona o novo item no topo
         setEventosList([savedOrUpdatedEvento, ...eventosList]);
         alert('Novo evento salvo com sucesso!');
       }
       
-      resetForm(); // Limpa o formulário
+      resetForm(); 
 
     } catch (error) {
       console.error('Falha ao enviar evento:', error);
@@ -98,11 +112,10 @@ export default function AdminEventosPage() {
     }
   };
 
-  // === NOVA FUNÇÃO: CARREGAR PARA EDITAR ===
+  // === FUNÇÃO: CARREGAR PARA EDITAR ===
   const handleEditClick = (evento) => {
     setEditingId(evento.id_evento);
     
-    // IMPORTANTE: Formata a data (do banco) para o formato YYYY-MM-DD (do input)
     const dataFormatada = evento.data_evento ? evento.data_evento.split('T')[0] : '';
     
     setTitulo(evento.titulo);
@@ -134,7 +147,7 @@ export default function AdminEventosPage() {
     }
   };
 
-  // Função para formatar a data (opcional, mas melhora a exibição)
+  // Função para formatar a data
   const formatarDataTabela = (dataSQL) => {
     if (!dataSQL) return 'N/A';
     const [ano, mes, dia] = dataSQL.split('T')[0].split('-');
@@ -225,39 +238,42 @@ export default function AdminEventosPage() {
         
         {loading && <p>Carregando tabela de eventos...</p>}
         
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Título</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {eventosList.map((evento) => (
-              <tr key={evento.id_evento}>
-                <td>{formatarDataTabela(evento.data_evento)}</td>
-                <td>{evento.titulo}</td>
-                <td>
-                  <button 
-                    className="btn btn-secondary" 
-                    style={{ padding: '5px 10px' }}
-                    onClick={() => handleEditClick(evento)}
-                  >
-                    Editar
-                  </button>
-                  <button 
-                    className="btn btn-danger" 
-                    style={{ padding: '5px 10px', marginLeft: '5px' }}
-                    onClick={() => handleDelete(evento.id_evento)}
-                  >
-                    Excluir
-                  </button>
-                </td>
+        {/* CORREÇÃO DE SEGURANÇA: Só renderiza a tabela se 'eventosList' for um array */}
+        {!loading && Array.isArray(eventosList) && (
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Título</th>
+                <th>Ações</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {eventosList.map((evento) => (
+                <tr key={evento.id_evento}>
+                  <td>{formatarDataTabela(evento.data_evento)}</td>
+                  <td>{evento.titulo}</td>
+                  <td>
+                    <button 
+                      className="btn btn-secondary" 
+                      style={{ padding: '5px 10px' }}
+                      onClick={() => handleEditClick(evento)}
+                    >
+                      Editar
+                    </button>
+                    <button 
+                      className="btn btn-danger" 
+                      style={{ padding: '5px 10px', marginLeft: '5px' }}
+                      onClick={() => handleDelete(evento.id_evento)}
+                    >
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </section>
     </main>
   );
