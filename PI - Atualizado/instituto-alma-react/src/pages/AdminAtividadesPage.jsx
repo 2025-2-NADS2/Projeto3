@@ -1,19 +1,136 @@
 // src/pages/AdminAtividadesPage.jsx
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-// 1. Importamos os dados das atividades
-import atividadesData from '../data/atividades.json';
+import React, { useState, useEffect } from 'react';
 
 export default function AdminAtividadesPage() {
+  
+  // === ESTADO PARA O FORMULÁRIO ===
+  const [titulo, setTitulo] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
+  const [descCurta, setDescCurta] = useState('');
+  const [descLonga, setDescLonga] = useState('');
+  
+  // === ESTADO PARA A TABELA ===
+  const [atividadesList, setAtividadesList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // No futuro, aqui você enviaria os dados do formulário
-    // para a API para criar uma nova atividade.
-    alert('Nova atividade salva! (simulação)');
+  // === NOVO ESTADO: MODO DE EDIÇÃO ===
+  const [editingId, setEditingId] = useState(null);
+
+  // === FUNÇÃO PARA BUSCAR DADOS (GET) ===
+  const fetchAtividades = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('http://localhost:3001/api/atividades');
+      const data = await response.json();
+      setAtividadesList(data);
+    } catch (error) {
+      console.error('Erro ao buscar atividades:', error);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  // Carrega os dados da API quando a página abre
+  useEffect(() => {
+    fetchAtividades();
+  }, []);
+
+  // === LIMPAR O FORMULÁRIO ===
+  const resetForm = () => {
+    setTitulo('');
+    setImgUrl('');
+    setDescCurta('');
+    setDescLonga('');
+    setEditingId(null); // Sai do modo de edição
+  };
+
+  // === FUNÇÃO DE ENVIO DO FORMULÁRIO (POST ou PUT) ===
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+    
+    const atividadeData = {
+      titulo: titulo,
+      img_url: imgUrl,
+      desc_curta: descCurta,
+      desc_longa: descLonga
+    };
+
+    // Decide se é CREATE (POST) ou UPDATE (PUT)
+    const isEditing = editingId !== null;
+    const url = isEditing 
+      ? `http://localhost:3001/api/atividades/${editingId}`
+      : 'http://localhost:3001/api/atividades';
+    const method = isEditing ? 'PUT' : 'POST';
+
+    try {
+      const response = await fetch(url, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(atividadeData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro ao ${isEditing ? 'atualizar' : 'salvar'} a atividade`);
+      }
+      
+      const savedOrUpdatedAtividade = await response.json();
+
+      if (isEditing) {
+        // Modo Edição: Atualiza o item na lista
+        setAtividadesList(atividadesList.map(item => 
+          item.id_atividade === editingId ? savedOrUpdatedAtividade : item
+        ));
+        alert('Atividade atualizada com sucesso!');
+      } else {
+        // Modo Criação: Adiciona o novo item no topo
+        setAtividadesList([savedOrUpdatedAtividade, ...atividadesList]);
+        alert('Nova atividade salva com sucesso!');
+      }
+      
+      resetForm(); // Limpa o formulário
+
+    } catch (error) {
+      console.error('Falha ao enviar atividade:', error);
+      alert(`Erro ao salvar: ${error.message}`);
+    }
+  };
+
+  // === NOVA FUNÇÃO: CARREGAR PARA EDITAR ===
+  const handleEditClick = (atividade) => {
+    // 1. Define o ID de edição
+    setEditingId(atividade.id_atividade);
+    
+    // 2. Preenche o formulário com os dados da atividade
+    setTitulo(atividade.titulo);
+    setImgUrl(atividade.img_url || '');
+    setDescCurta(atividade.desc_curta);
+    setDescLonga(atividade.desc_longa || '');
+
+    // 3. Rola a tela para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // === FUNÇÃO (DELETE) ===
+  const handleDelete = async (idParaExcluir) => {
+    if (editingId === idParaExcluir) {
+      resetForm();
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3001/api/atividades/${idParaExcluir}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Falha ao excluir a atividade.');
+      }
+      setAtividadesList(atividadesList.filter(a => a.id_atividade !== idParaExcluir));
+      alert('Atividade excluída com sucesso!');
+    } catch (error) {
+      alert(`Erro ao excluir: ${error.message}`);
+    }
+  };
+
 
   return (
     <main className="admin-content">
@@ -22,39 +139,78 @@ export default function AdminAtividadesPage() {
         <p>Crie, edite ou exclua as postagens da página "Nossas Atividades".</p>
       </header>
 
-      {/* Seção 1: Formulário de Nova Atividade */}
+      {/* Seção 1: Formulário (agora dinâmico) */}
       <section className="management-section">
-        <h2>Adicionar Nova Atividade</h2>
+        
+        {/* O Título muda */}
+        <h2>{editingId ? 'Editar Atividade' : 'Adicionar Nova Atividade'}</h2>
+        
         <form className="admin-form" onSubmit={handleSubmit}>
+          
           <div className="input-group">
             <label htmlFor="ativ-titulo">Título da Atividade</label>
-            <input type="text" id="ativ-titulo" placeholder="Ex: Projeto Sopa Fraterna" />
+            <input 
+              type="text" id="ativ-titulo" placeholder="Ex: Projeto Sopa Fraterna"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+              required 
+            />
           </div>
           
           <div className="input-group">
-            <label htmlFor="ativ-imagem">Imagem de Capa (Upload)</label>
-            <input type="file" id="ativ-imagem" accept="image/png, image/jpeg" />
-            <small>Envie uma imagem (JPG ou PNG) para a capa do card.</small>
+            <label htmlFor="ativ-imagem">URL da Imagem de Capa</label>
+            <input 
+              type="text" id="ativ-imagem" placeholder="Ex: /images/minha-foto.jpg"
+              value={imgUrl}
+              onChange={(e) => setImgUrl(e.target.value)}
+            />
+            <small>Use uma URL (ex: /images/foto.jpg) da sua pasta /public.</small>
           </div>
 
           <div className="input-group">
             <label htmlFor="ativ-desc-curta">Descrição Curta (para o card)</label>
-            <input type="text" id="ativ-desc-curta" placeholder="Uma frase curta que aparece no card." maxLength="100" />
+            <input 
+              type="text" id="ativ-desc-curta" placeholder="Uma frase curta que aparece no card." maxLength="100"
+              value={descCurta}
+              onChange={(e) => setDescCurta(e.target.value)}
+              required
+            />
           </div>
 
           <div className="input-group">
             <label htmlFor="ativ-desc-longa">Descrição Completa (para o modal)</label>
-            <textarea id="ativ-desc-longa" rows="6" placeholder="O texto completo que aparecerá no modal 'Ver detalhes'..."></textarea>
+            <textarea 
+              id="ativ-desc-longa" rows="6" placeholder="O texto completo que aparecerá no modal 'Ver detalhes'..."
+              value={descLonga}
+              onChange={(e) => setDescLonga(e.target.value)}
+            ></textarea>
           </div>
 
-          <button type="submit" className="btn btn-primary">Salvar Atividade</button>
+          {/* Os botões mudam */}
+          <button type="submit" className="btn btn-primary">
+            {editingId ? 'Atualizar Atividade' : 'Salvar Atividade'}
+          </button>
+          
+          {/* Botão de Cancelar (só aparece se estiver editando) */}
+          {editingId && (
+            <button 
+              type="button" 
+              className="btn btn-secondary" 
+              onClick={resetForm}
+              style={{ marginLeft: '10px' }}
+            >
+              Cancelar Edição
+            </button>
+          )}
         </form>
       </section>
       
-      {/* Seção 2: Tabela de Atividades Publicadas */}
+      {/* Seção 2: Tabela (agora com 'onClick' no botão editar) */}
       <section className="management-section">
         <h2>Atividades Publicadas</h2>
         
+        {loading && <p>Carregando tabela de atividades...</p>}
+
         <table className="admin-table">
           <thead>
             <tr>
@@ -65,22 +221,33 @@ export default function AdminAtividadesPage() {
             </tr>
           </thead>
           <tbody>
-            {/* 2. Usamos .map() para ler os dados do JSON */}
-            {atividadesData.map((atividade) => (
-              <tr key={atividade.id}>
+            {atividadesList.map((atividade) => (
+              <tr key={atividade.id_atividade}>
                 <td>
                   <img 
-                    src={`/${atividade.img}`} // Adicionamos a barra '/' para pegar da pasta /public
-                    alt={atividade.title} 
+                    src={atividade.img_url || '/images/teste.jpg'}
+                    alt={atividade.titulo} 
                     style={{ width: '100px', height: '60px', objectFit: 'cover', borderRadius: '4px' }} 
                   />
                 </td>
-                <td>{atividade.title}</td>
-                <td>{atividade.short_desc}</td>
+                <td>{atividade.titulo}</td>
+                <td>{atividade.desc_curta}</td>
                 <td>
-                  {/* Por enquanto, os links de Ações não fazem nada */}
-                  <a href="#" className="btn btn-secondary" style={{ padding: '5px 10px' }}>Editar</a>
-                  <a href="#" className="btn btn-danger" style={{ padding: '5px 10px', marginLeft: '5px' }}>Excluir</a>
+                  {/* Botão Editar agora chama handleEditClick */}
+                  <button 
+                    className="btn btn-secondary" 
+                    style={{ padding: '5px 10px' }}
+                    onClick={() => handleEditClick(atividade)}
+                  >
+                    Editar
+                  </button>
+                  <button 
+                    className="btn btn-danger" 
+                    style={{ padding: '5px 10px', marginLeft: '5px' }}
+                    onClick={() => handleDelete(atividade.id_atividade)}
+                  >
+                    Excluir
+                  </button>
                 </td>
               </tr>
             ))}
