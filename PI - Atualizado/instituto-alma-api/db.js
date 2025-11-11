@@ -8,7 +8,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Cria o "pool" de conexões
-// Um pool é mais eficiente do que criar uma conexão para cada consulta
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -16,13 +15,24 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  
+  // ===============================================
+  // === ADICIONE ESTAS LINHAS PARA CONECTAR AO AZURE ===
+  // Isso diz ao Node.js para usar uma conexão segura (SSL)
+  // mas para não ser excessivamente rigoroso sobre o certificado.
+  // É a correção padrão para conexões locais ao Azure.
+  ssl: {
+    rejectUnauthorized: false
+  }
+  // ===============================================
 });
 
-// Testa a conexão (opcional, mas bom para debug)
+// Testa a conexão
 pool.getConnection()
   .then(connection => {
-    console.log('✅ Conectado ao banco de dados MySQL!');
+    // Adicionamos (Azure) para sabermos que funcionou!
+    console.log('✅ Conectado ao banco de dados MySQL (Azure)!');
     connection.release();
   })
   .catch(err => {

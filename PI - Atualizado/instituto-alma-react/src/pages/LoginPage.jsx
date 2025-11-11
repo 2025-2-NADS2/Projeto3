@@ -5,88 +5,134 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   
-  // 1. Hook para navegação
-  // Usaremos isso para redirecionar o usuário após o "login"
   const navigate = useNavigate();
 
-  // 2. Criamos um 'estado' para controlar a aba ativa
-  // Começa como 'doador', assim como no seu HTML
+  // Estado para os formulários
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
   const [activeTab, setActiveTab] = useState('doador');
+  
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  // 3. Funções de "login" falsas
-  // Elas apenas nos redirecionam para os painéis corretos
-  const handleDoadorLogin = (e) => {
-    e.preventDefault(); // Impede o formulário de recarregar a página
-    // No futuro, aqui você faria a chamada de API
-    console.log('Logando como Doador...');
-    navigate('/doador/painel'); // Redireciona para o painel do doador
+  // Função de Login Unificada
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Impede o formulário de recarregar
+    setError(null);
+    setLoading(true);
+
+    const userType = activeTab; // 'doador' ou 'admin'
+
+    try {
+      // 1. Chama a API de Login
+      const response = await fetch('http://localhost:3001/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha, userType })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Se a API retornar um erro (401, 400, 500)
+        throw new Error(data.message || 'Erro ao tentar logar.');
+      }
+
+      // 2. SUCESSO! Salva o Token e os dados do usuário
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      // 3. Redireciona para o painel correto
+      if (data.user.tipo === 'Administrador') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/doador/painel');
+      }
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleAdminLogin = (e) => {
-    e.preventDefault();
-    console.log('Logando como Admin...');
-    navigate('/admin/dashboard'); // Redireciona para o painel do admin
+  // Reseta o formulário ao trocar de aba
+  const changeTab = (tab) => {
+    setActiveTab(tab);
+    setEmail('');
+    setSenha('');
+    setError(null);
   };
 
   return (
     <>
       <div className="login-tabs">
-        {/* 4. Os botões agora usam 'onClick' para mudar o estado */}
         <button 
           className={`tab-btn ${activeTab === 'doador' ? 'active' : ''}`} 
-          onClick={() => setActiveTab('doador')}
+          onClick={() => changeTab('doador')}
         >
           Sou Doador
         </button>
         <button 
           className={`tab-btn ${activeTab === 'admin' ? 'active' : ''}`} 
-          onClick={() => setActiveTab('admin')}
+          onClick={() => changeTab('admin')}
         >
           Sou Administrador
         </button>
       </div>
 
-      {/* 5. Formulário do Doador
-         - Usamos 'onSubmit' para chamar nossa função de login
-         - A classe 'active' é controlada pelo 'estado'
-      */}
-      <form 
-        id="form-doador" 
-        className={`login-form ${activeTab === 'doador' ? 'active' : ''}`} 
-        onSubmit={handleDoadorLogin}
-      >
-        <h2>Acesse seu portal</h2>
-        <p>Acompanhe o impacto da sua doação.</p>
-        <div className="input-group">
-          <label htmlFor="email-doador">Email</label>
-          <input type="email" id="email-doador" required />
-        </div>
-        <div className="input-group">
-          <label htmlFor="senha-doador">Senha</label>
-          <input type="password" id="senha-doador" required />
-        </div>
-        <a href="#" className="forgot-password">Esqueceu sua senha?</a>
-        <button type="submit" className="btn btn-primary btn-full">Entrar</button>
-        <p className="signup-link">Não tem uma conta? <Link to="/cadastro">Cadastre-se agora</Link></p>
-      </form>
+      {/* ATENÇÃO: Agora temos UM formulário que muda de contexto */}
+      <form className="login-form active" onSubmit={handleLogin}>
+        
+        {/* Título muda baseado na aba */}
+        {activeTab === 'doador' ? (
+          <>
+            <h2>Acesse seu portal</h2>
+            <p>Acompanhe o impacto da sua doação.</p>
+          </>
+        ) : (
+          <>
+            <h2>Painel Administrativo</h2>
+            <p>Acesso exclusivo para a equipe do instituto.</p>
+          </>
+        )}
 
-      {/* 6. Formulário do Admin */}
-      <form 
-        id="form-admin" 
-        className={`login-form ${activeTab === 'admin' ? 'active' : ''}`}
-        onSubmit={handleAdminLogin}
-      >
-        <h2>Painel Administrativo</h2>
-        <p>Acesso exclusivo para a equipe do instituto.</p>
         <div className="input-group">
-          <label htmlFor="email-admin">Email</label>
-          <input type="email" id="email-admin" required />
+          <label htmlFor="email">Email</label>
+          <input 
+            type="email" id="email" required 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className="input-group">
-          <label htmlFor="senha-admin">Senha</label>
-          <input type="password" id="senha-admin" required />
+          <label htmlFor="senha">Senha</label>
+          <input 
+            type="password" id="senha" required 
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+          />
         </div>
-        <button type="submit" className="btn btn-primary btn-full">Entrar</button>
+
+        {/* Mostra link de "Esqueci a senha" e "Cadastro" só para doador */}
+        {activeTab === 'doador' && (
+          <a href="#" className="forgot-password">Esqueceu sua senha?</a>
+        )}
+
+        {/* Mostra erros da API */}
+        {error && (
+          <p style={{ color: 'var(--state-error)', marginBottom: '15px' }}>
+            {error}
+          </p>
+        )}
+
+        <button type="submit" className="btn btn-primary btn-full" disabled={loading}>
+          {loading ? 'Entrando...' : 'Entrar'}
+        </button>
+        
+        {activeTab === 'doador' && (
+          <p className="signup-link">Não tem uma conta? <Link to="/cadastro">Cadastre-se agora</Link></p>
+        )}
       </form>
     </>
   );

@@ -1,16 +1,41 @@
 // src/pages/EventosPage.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-// Importamos os dados dos eventos
-import eventosData from '../data/eventos.json';
+// NÃO importamos mais o JSON estático
 
 export default function EventosPage() {
   
-  // === LÓGICA DO MODAL (Reutilizada) ===
+  // === ESTADO PARA A LISTA E LOADING ===
+  const [eventosList, setEventosList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  // === ESTADO PARA O MODAL ===
   const [modalData, setModalData] = useState(null);
 
+  // === FUNÇÃO PARA BUSCAR DADOS (GET) ===
+  const fetchEventos = async () => {
+    try {
+      setLoading(true);
+      // Busca os dados da API
+      const response = await fetch('http://localhost:3001/api/eventos');
+      const data = await response.json();
+      setEventosList(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error('Erro ao buscar eventos:', error);
+      setEventosList([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Roda a busca quando a página carrega
+  useEffect(() => {
+    fetchEventos();
+  }, []);
+
+  // === FUNÇÕES DO MODAL ===
   const openModal = (evento) => {
     setModalData(evento);
     document.documentElement.classList.add('modal-open');
@@ -22,7 +47,14 @@ export default function EventosPage() {
     document.documentElement.classList.remove('modal-open');
     document.body.classList.remove('modal-open');
   };
-  // === FIM DA LÓGICA DO MODAL ===
+
+  // Função para formatar a data (Ex: 25 DEZ 2024)
+  const formatarDataCard = (dataSQL) => {
+    if (!dataSQL) return '';
+    const data = new Date(dataSQL);
+    return data.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', timeZone: 'UTC' }).toUpperCase();
+  };
+
 
   return (
     <>
@@ -37,35 +69,37 @@ export default function EventosPage() {
         <div className="container">
           <div className="events-grid">
             
-            {/* Usamos .map() para exibir TODOS os cards de eventos */}
-            {eventosData.map((evento) => (
-              <article className="event-grid-card" key={evento.id}>
-                {/* Usamos o mesmo <button> com onClick da página de Atividades.
-                  O CSS que você adicionou no style.css já cuida do estilo dele.
-                */}
-                <button 
-                  className="event-card-button"
-                  onClick={() => openModal(evento)}
-                >
-                  <img src={evento.img} alt={evento.title} />
-                  <div className="card-body">
-                    {/* O card de evento tem uma data, que adicionamos aqui */}
-                    <span className="event-date">{evento.date}</span>
-                    <h3>{evento.title}</h3>
-                    <p>{evento.short_desc}</p>
-                    <span className="card-link">Ver detalhes →</span>
-                  </div>
-                </button>
-              </article>
-            ))}
+            {loading ? (
+              <p>Carregando eventos...</p>
+            ) : (
+              eventosList.length > 0 ? (
+                eventosList.map((evento) => (
+                  <article className="event-grid-card" key={evento.id_evento}>
+                    {/* Usamos o <button> para o onClick do modal */}
+                    <button 
+                      className="event-card-button"
+                      onClick={() => openModal(evento)}
+                    >
+                      <img src={evento.img_url || '/images/teste.jpg'} alt={evento.titulo} />
+                      <div className="card-body">
+                        <span className="event-date">{formatarDataCard(evento.data_evento)}</span>
+                        <h3>{evento.titulo}</h3>
+                        <p>{evento.desc_curta}</p>
+                        <span className="card-link">Ver detalhes →</span>
+                      </div>
+                    </button>
+                  </article>
+                ))
+              ) : (
+                <p>Nenhum evento agendado no momento.</p>
+              )
+            )}
 
           </div>
         </div>
       </section>
 
-      {/* === HTML DO MODAL ===
-        Exatamente o mesmo modal, mas alimentado com 'modalData' (que é um evento)
-      */}
+      {/* === HTML DO MODAL === */}
       {modalData && (
         <div 
           id="activity-modal" 
@@ -75,9 +109,8 @@ export default function EventosPage() {
           }}
         >
           <div className="modal-content">
-          
             <header className="modal-header">
-              <h2 id="modal-title">{modalData.title}</h2>
+              <h2 id="modal-title">{modalData.titulo}</h2>
               <button 
                 id="modal-close" 
                 className="modal-close-btn" 
@@ -86,22 +119,18 @@ export default function EventosPage() {
                 &times;
               </button>
             </header>
-
             <section className="modal-body">
               <img 
                 id="modal-image" 
-                src={modalData.img} 
-                alt={modalData.title} 
+                src={modalData.img_url || '/images/teste.jpg'} 
+                alt={modalData.titulo} 
                 className="modal-image-main" 
               />
-              {/* Usamos a descrição longa (long_desc) do JSON */}
-              <p id="modal-description">{modalData.long_desc}</p>
+              <p id="modal-description">{modalData.desc_longa}</p>
             </section>
-          
             <footer className="modal-footer">
               <Link to="/doe" className="btn btn-primary">Quero Ajudar</Link>
             </footer>
-
           </div>
         </div>
       )}
