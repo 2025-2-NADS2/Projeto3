@@ -9,24 +9,13 @@ export default function AdminEventosPage() {
   const [imgUrl, setImgUrl] = useState('');
   const [descCurta, setDescCurta] = useState('');
   const [descLonga, setDescLonga] = useState('');
-<<<<<<< HEAD
   const [eventosList, setEventosList] = useState([]);
   const [loading, setLoading] = useState(true);
-=======
-  
-  // === ESTADO PARA A TABELA ===
-  // AQUI ESTÁ A CORREÇÃO: Inicializamos com um array vazio []
-  const [eventosList, setEventosList] = useState([]); 
-  const [loading, setLoading] = useState(true);
-
-  // === ESTADO: MODO DE EDIÇÃO ===
->>>>>>> 34fa2e265cdd613667973805371315e7450e6602
   const [editingId, setEditingId] = useState(null);
 
   const fetchEventos = async () => {
     try {
       setLoading(true);
-<<<<<<< HEAD
       // TROCA 'fetch' POR 'authFetch'
       const response = await authFetch('http://localhost:3001/api/eventos');
       if (!response.ok) {
@@ -38,28 +27,6 @@ export default function AdminEventosPage() {
     } catch (error) {
       console.error('Erro ao buscar eventos:', error);
       setEventosList([]);
-=======
-      const response = await fetch('http://localhost:3001/api/eventos');
-      
-      // Verificação de erro da API
-      if (!response.ok) {
-        throw new Error(`Erro HTTP: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      // Verificação se a data é um array (segurança)
-      if (Array.isArray(data)) {
-        setEventosList(data);
-      } else {
-        console.error("Erro: A API não retornou um array.", data);
-        setEventosList([]); // Garante que seja um array
-      }
-
-    } catch (error) {
-      console.error('Erro ao buscar eventos:', error);
-      setEventosList([]); // Em caso de falha total, define como array vazio
->>>>>>> 34fa2e265cdd613667973805371315e7450e6602
     } finally {
       setLoading(false);
     }
@@ -70,16 +37,7 @@ export default function AdminEventosPage() {
   }, []);
 
   const resetForm = () => {
-<<<<<<< HEAD
     setTitulo(''); setDataEvento(''); setImgUrl(''); setDescCurta(''); setDescLonga(''); setEditingId(null);
-=======
-    setTitulo('');
-    setDataEvento('');
-    setImgUrl('');
-    setDescCurta('');
-    setDescLonga('');
-    setEditingId(null); 
->>>>>>> 34fa2e265cdd613667973805371315e7450e6602
   };
 
   const handleSubmit = async (e) => {
@@ -97,7 +55,6 @@ export default function AdminEventosPage() {
       if (!response.ok) throw new Error(`Erro ao ${isEditing ? 'atualizar' : 'salvar'} o evento`);
       const savedData = await response.json();
       if (isEditing) {
-<<<<<<< HEAD
         setEventosList(eventosList.map(item => item.id_evento === editingId ? savedData : item));
         alert('Evento atualizado com sucesso!');
       } else {
@@ -105,33 +62,13 @@ export default function AdminEventosPage() {
         alert('Novo evento salvo com sucesso!');
       }
       resetForm();
-=======
-        setEventosList(eventosList.map(item => 
-          item.id_evento === editingId ? savedOrUpdatedEvento : item
-        ));
-        alert('Evento atualizado com sucesso!');
-      } else {
-        setEventosList([savedOrUpdatedEvento, ...eventosList]);
-        alert('Novo evento salvo com sucesso!');
-      }
-      
-      resetForm(); 
-
->>>>>>> 34fa2e265cdd613667973805371315e7450e6602
     } catch (error) {
       alert(`Erro ao salvar: ${error.message}`);
     }
   };
 
-<<<<<<< HEAD
   const handleEditClick = (evento) => {
     setEditingId(evento.id_evento);
-=======
-  // === FUNÇÃO: CARREGAR PARA EDITAR ===
-  const handleEditClick = (evento) => {
-    setEditingId(evento.id_evento);
-    
->>>>>>> 34fa2e265cdd613667973805371315e7450e6602
     const dataFormatada = evento.data_evento ? evento.data_evento.split('T')[0] : '';
     setTitulo(evento.titulo);
     setDataEvento(dataFormatada);
@@ -156,10 +93,6 @@ export default function AdminEventosPage() {
     }
   };
 
-<<<<<<< HEAD
-=======
-  // Função para formatar a data
->>>>>>> 34fa2e265cdd613667973805371315e7450e6602
   const formatarDataTabela = (dataSQL) => {
     if (!dataSQL) return 'N/A';
     const [ano, mes, dia] = dataSQL.split('T')[0].split('-');
@@ -237,11 +170,6 @@ export default function AdminEventosPage() {
       <section className="management-section">
         <h2>Eventos Publicados</h2>
         {loading && <p>Carregando tabela de eventos...</p>}
-<<<<<<< HEAD
-=======
-        
-        {/* CORREÇÃO DE SEGURANÇA: Só renderiza a tabela se 'eventosList' for um array */}
->>>>>>> 34fa2e265cdd613667973805371315e7450e6602
         {!loading && Array.isArray(eventosList) && (
           <table className="admin-table">
             <thead>
