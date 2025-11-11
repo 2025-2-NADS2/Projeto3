@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Projeto Dia das Crianças",
+    "img": "images/Capa.Instituto.Criança.JPG",
+    "short_desc": "Celebração especial com distribuição de brinquedos...",
+    "long_desc": "lorem ipsum dolor sit amet. Est ipsam reprehenderit sed sunt dolorem ea fuga corrupti. Ut deserunt sint non enim deserunt ea sint quas et nulla voluptatem ut illo omnis nam autem galisum. Qui dolor recusandae non provident iste ea dolorum vitae eum ipsum quis ut nihil officiis est commodi quos. Ut magnam totam sed veniam ullam ab expedita galisum sit sint itaque aut harum enim et enim quisquam."
+  },
+  {
+    "id": 2,
+    "title": "Projeto Natal",
+    "img": "images/IMG_1284.JPG",
+    "short_desc": "Campanha com distribuição de presentes e ceia...",
+    "long_desc": "Lorem ipsum dolor sit amet. Est ipsam reprehenderit sed sunt dolorem ea fuga corrupti. Ut deserunt sint non enim deserunt ea sint quas et nulla voluptatem ut illo omnis nam autem galisum. Qui dolor recusandae non provident iste ea dolorum vitae eum ipsum quis ut nihil officiis est commodi quos. Ut magnam totam sed veniam ullam ab expedita galisum sit sint itaque aut harum enim et enim quisquam."
+  },
+  {
+    "id": 3,
+    "title": "Projeto Sopa Fraterna",
+    "img": "images/teste.jpg",
+    "short_desc": "Apoio integral a gestantes com acompanhamento pré-natal...",
+    "long_desc": "Lorem ipsum dolor sit amet. Est ipsam reprehenderit sed sunt dolorem ea fuga corrupti. Ut deserunt sint non enim deserunt ea sint quas et nulla voluptatem ut illo omnis nam autem galisum. Qui dolor recusandae non provident iste ea dolorum vitae eum ipsum quis ut nihil officiis est commodi quos. Ut magnam totam sed veniam ullam ab expedita galisum sit sint itaque aut harum enim et enim quisquam."
+  },
+  {
+    "id": 4,
+    "title": "Projeto Cesta Básica",
+    "img": "images/WhatsApp Image 2021-04-03 at 15.02.00.jpeg",
+    "short_desc": "Distribuição mensal de cestas básicas para famílias...",
+    "long_desc": "Lorem ipsum dolor sit amet. Est ipsam reprehenderit sed sunt dolorem ea fuga corrupti. Ut deserunt sint non enim deserunt ea sint quas et nulla voluptatem ut illo omnis nam autem galisum. Qui dolor recusandae non provident iste ea dolorum vitae eum ipsum quis ut nihil officiis est commodi quos. Ut magnam totam sed veniam ullam ab expedita galisum sit sint itaque aut harum enim et enim quisquam."
+  }
+]

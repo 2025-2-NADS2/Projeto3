@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Festa de Natal Comunitária",
+    "date": "15 DEZ 2024",
+    "img": "https://placehold.co/400x250/1A3D8D/FFFFFF?text=Evento+1",
+    "short_desc": "Uma tarde de celebração com presentes, lanches e muita alegria...",
+    "long_desc": "Descrição completa do evento Festa de Natal Comunitária..."
+  },
+  {
+    "id": 2,
+    "title": "Oficina de Artes para Crianças",
+    "date": "25 JAN 2025",
+    "img": "https://placehold.co/400x250/DD5533/FFFFFF?text=Evento+2",
+    "short_desc": "Uma tarde criativa e divertida para as crianças...",
+    "long_desc": "Descrição completa do evento Oficina de Artes para Crianças..."
+  },
+  {
+    "id": 3,
+    "title": "Dia do Voluntário Alma",
+    "date": "18 FEV 2025",
+    "img": "https://placehold.co/400x250/33A054/FFFFFF?text=Evento+3",
+    "short_desc": "Um dia especial de treinamento e confraternização...",
+    "long_desc": "Descrição completa do evento Dia do Voluntário Alma..."
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "recibo": "#2025-10-A",
+    "valor": 100.00,
+    "data": "01/10/2025",
+    "status": "Confirmado",
+    "url_pdf": "#"
+  },
+  {
+    "recibo": "#2025-08-C",
+    "valor": 50.00,
+    "data": "15/08/2025",
+    "status": "Confirmado",
+    "url_pdf": "#"
+  },
+  {
+    "recibo": "#2025-05-B",
+    "valor": 150.00,
+    "data": "05/05/2025",
+    "status": "Confirmado",
+    "url_pdf": "#"
+  },
+  {
+    "recibo": "#2025-02-A",
+    "valor": 50.00,
+    "data": "10/02/2025",
+    "status": "Confirmado",
+    "url_pdf": "#"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  { "mes": "Jan", "valor": 1600.00, "percentual": "60%" },
+  { "mes": "Fev", "valor": 900.00, "percentual": "40%" },
+  { "mes": "Mar", "valor": 1950.00, "percentual": "75%" },
+  { "mes": "Abr", "valor": 1100.00, "percentual": "50%" },
+  { "mes": "Mai", "valor": 2100.00, "percentual": "80%" },
+  { "mes": "Jun", "valor": 2500.00, "percentual": "90%" },
+  { "mes": "Jul", "valor": 1800.00, "percentual": "70%" },
+  { "mes": "Ago", "valor": 1200.00, "percentual": "55%" },
+  { "mes": "Set", "valor": 1700.00, "percentual": "65%" },
+  { "mes": "Out", "valor": 3100.00, "percentual": "100%" },
+  { "mes": "Nov", "valor": 0.00, "percentual": "0%" },
+  { "mes": "Dez", "valor": 0.00, "percentual": "0%" }
+]
